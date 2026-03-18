@@ -35,10 +35,10 @@
 > ✔️ Garage, yard, or estate cleanouts
 > ✔️ Same-week service available
 >
-> 📞 **Call or Text Sir Diego: (909) 373-5516**
+> 📞 **Call or Text Diego: (909) 373-5516**
 > 🌐 Serving Chino, Chino Hills, Ontario, Rancho Cucamonga & surrounding areas
 >
-> — Sir Diego | **Eliminate Junk Removal** 🗑️✨
+> — Diego | **Eliminate Junk Removal** 🗑️✨
 
 ---
 
@@ -57,7 +57,7 @@ Every post below is fully written and ready to copy and paste. No blanks. No pla
 >
 > If you've got a space like that — a garage, a spare room, a backyard — we can make it look completely different in one afternoon.
 >
-> 📞 **Call or text Sir Diego: (909) 373-5516**
+> 📞 **Call or text Diego: (909) 373-5516**
 > Fast quotes. Same-week service. Flat-rate pricing.
 > — Eliminate Junk Removal | Chino · Ontario · Rancho Cucamonga · Chino Hills
 
@@ -76,8 +76,8 @@ Every post below is fully written and ready to copy and paste. No blanks. No pla
 >
 > Spots are limited. First come, first served.
 >
-> 📞 **Text or call Sir Diego: (909) 373-5516**
-> — Sir Diego | Eliminate Junk Removal 🗑️
+> 📞 **Text or call Diego: (909) 373-5516**
+> — Diego | Eliminate Junk Removal 🗑️
 
 ---
 
@@ -93,7 +93,7 @@ Every post below is fully written and ready to copy and paste. No blanks. No pla
 > Drop a 🙋 in the comments if this is you — I'll DM you a free quote today.
 >
 > 📞 Or text me directly: **(909) 373-5516**
-> — Sir Diego | Eliminate Junk Removal | Serving the Inland Empire
+> — Diego | Eliminate Junk Removal | Serving the Inland Empire
 
 ---
 
@@ -110,7 +110,7 @@ Every post below is fully written and ready to copy and paste. No blanks. No pla
 >
 > If your backyard, garage, or home needs a fresh start — reach out. Free quotes, fast scheduling.
 >
-> 📞 **Call or text Sir Diego: (909) 373-5516**
+> 📞 **Call or text Diego: (909) 373-5516**
 > — Eliminate Junk Removal | Ontario · Chino · Rancho Cucamonga
 
 ---
@@ -129,20 +129,20 @@ Every post below is fully written and ready to copy and paste. No blanks. No pla
 >
 > Text me a photo and I'll have a quote back to you within the hour.
 >
-> 📞 **(909) 373-5516** — Sir Diego | Eliminate Junk Removal
+> 📞 **(909) 373-5516** — Diego | Eliminate Junk Removal
 
 ---
 
 ### Day 6 — Social Proof / What Customers Say
 > ⭐⭐⭐⭐⭐ **This is why I show up every single day.**
 >
-> Last week a customer in Rancho Cucamonga told me: *"Sir Diego, I've been trying to get that garage done for three years. You guys did it in an afternoon. I can't believe how easy it was."*
+> Last week a customer in Rancho Cucamonga told me: *"Diego, I've been trying to get that garage done for three years. You guys did it in an afternoon. I can't believe how easy it was."*
 >
 > That's the reaction we get over and over — people are surprised by how fast, affordable, and stress-free it is.
 >
 > If you've been putting off a cleanout because you think it'll be a hassle or too expensive — just text me. Free quote, no pressure, no surprises.
 >
-> 📞 **(909) 373-5516** — Sir Diego | Eliminate Junk Removal
+> 📞 **(909) 373-5516** — Diego | Eliminate Junk Removal
 > Serving Chino · Ontario · Rancho Cucamonga · Chino Hills & surrounding areas
 
 ---
@@ -158,7 +158,7 @@ Every post below is fully written and ready to copy and paste. No blanks. No pla
 >
 > If you're not sure if we take it — just ask. We almost always do.
 >
-> 📞 **Text or call Sir Diego: (909) 373-5516**
+> 📞 **Text or call Diego: (909) 373-5516**
 > Fast quotes. Same-week service. Inland Empire's trusted junk haulers.
 > — Eliminate Junk Removal 🗑️✨
 
@@ -167,14 +167,14 @@ Every post below is fully written and ready to copy and paste. No blanks. No pla
 ### Day 8 — Local / Community Trust Post
 > 🏙️ **I'm a local guy doing local work — and this community means everything to me.**
 >
-> I'm Sir Diego, and I run Eliminate Junk Removal right here in the Inland Empire. I grew up in this area, I serve this area, and I treat every job like it's my neighbor's home — because it usually is.
+> I'm Diego, and I run Eliminate Junk Removal right here in the Inland Empire. I grew up in this area, I serve this area, and I treat every job like it's my neighbor's home — because it usually is.
 >
 > We've helped families in Chino, Ontario, Rancho Cucamonga, and Chino Hills go from overwhelmed to relieved in a single afternoon.
 >
 > If you need junk removed, I'll give you a fair price, show up when I say I will, and leave your space better than I found it.
 >
 > 📞 **(909) 373-5516** — Call or text me anytime.
-> — Sir Diego | Eliminate Junk Removal
+> — Diego | Eliminate Junk Removal
 
 ---
 
@@ -189,7 +189,7 @@ Every post below is fully written and ready to copy and paste. No blanks. No pla
 >
 > Text me a quick photo and I'll give you a price in minutes.
 >
-> 📞 **(909) 373-5516** — Sir Diego | Eliminate Junk Removal
+> 📞 **(909) 373-5516** — Diego | Eliminate Junk Removal
 > Serving Chino · Ontario · Rancho Cucamonga · Chino Hills
 
 ---
@@ -206,7 +206,7 @@ Every post below is fully written and ready to copy and paste. No blanks. No pla
 >
 > I've worked with realtors and PMs throughout the IE and know how important turnaround time is.
 >
-> 📞 **Call or text Sir Diego: (909) 373-5516)**
+> 📞 **Call or text Diego: (909) 373-5516)**
 > — Eliminate Junk Removal | Inland Empire
 
 ---
@@ -220,7 +220,7 @@ Every post below is fully written and ready to copy and paste. No blanks. No pla
 >
 > Fast scheduling. Flat-rate pricing. No stress.
 >
-> 📞 **Text Sir Diego: (909) 373-5516** — Free quote in minutes.
+> 📞 **Text Diego: (909) 373-5516** — Free quote in minutes.
 > — Eliminate Junk Removal | Chino · Ontario · Rancho Cucamonga · Chino Hills
 
 ---
@@ -236,7 +236,7 @@ Every post below is fully written and ready to copy and paste. No blanks. No pla
 >
 > If you or someone you know is dealing with an estate cleanout, a difficult home situation, or just years of buildup, please reach out. We're here to help.
 >
-> 📞 **(909) 373-5516** — Sir Diego | Eliminate Junk Removal
+> 📞 **(909) 373-5516** — Diego | Eliminate Junk Removal
 > Serving the Inland Empire with care 💙
 
 ---
@@ -248,7 +248,7 @@ Every post below is fully written and ready to copy and paste. No blanks. No pla
 >
 > Don't spend your Saturday wrestling with furniture and making dump runs. Text me now and we'll have your space cleared before lunch.
 >
-> 📞 **Call or text Sir Diego: (909) 373-5516**
+> 📞 **Call or text Diego: (909) 373-5516**
 > Fast quotes. Flat-rate pricing. Weekend availability.
 > — Eliminate Junk Removal | Inland Empire 🗑️
 
@@ -268,21 +268,21 @@ Every post below is fully written and ready to copy and paste. No blanks. No pla
 > Just honest, upfront pricing from a local guy who wants the work.
 >
 > 📞 **Text me a photo: (909) 373-5516)**
-> — Sir Diego | Eliminate Junk Removal
+> — Diego | Eliminate Junk Removal
 
 ---
 
 ### Day 15 — Seasonal / Spring Cleanout Push
 > 🌞 **Spring is here — and your garage has been waiting long enough.**
 >
-> Every year around this time, I hear the same thing: "Sir Diego, I've been wanting to do this for months." And every year, the people who call early get their space back. The ones who wait until summer are stuck sweating it out.
+> Every year around this time, I hear the same thing: "Diego, I've been wanting to do this for months." And every year, the people who call early get their space back. The ones who wait until summer are stuck sweating it out.
 >
 > Don't wait. We have availability right now, and I can usually get you scheduled within the week.
 >
 > One afternoon is all it takes to go from buried to breathing room.
 >
 > 📞 **Call or text: (909) 373-5516**
-> — Sir Diego | Eliminate Junk Removal | Chino · Ontario · Rancho Cucamonga
+> — Diego | Eliminate Junk Removal | Chino · Ontario · Rancho Cucamonga
 
 ---
 
@@ -299,7 +299,7 @@ Every post below is fully written and ready to copy and paste. No blanks. No pla
 >
 > That's it. Book today. Feel good about your space this weekend.
 >
-> 📞 **(909) 373-5516** — Sir Diego | Eliminate Junk Removal
+> 📞 **(909) 373-5516** — Diego | Eliminate Junk Removal
 
 ---
 
@@ -315,7 +315,7 @@ Every post below is fully written and ready to copy and paste. No blanks. No pla
 > This is what we do, every single day, across the Inland Empire. No job too big, no job too small.
 >
 > Ready to get yours on the schedule? 📞 **(909) 373-5516**
-> — Sir Diego | Eliminate Junk Removal
+> — Diego | Eliminate Junk Removal
 
 ---
 
@@ -328,7 +328,7 @@ Every post below is fully written and ready to copy and paste. No blanks. No pla
 >
 > And if you haven't used us yet — we'd love to earn your business. Free quote, no pressure.
 >
-> 📞 **(909) 373-5516** — Sir Diego | Eliminate Junk Removal
+> 📞 **(909) 373-5516** — Diego | Eliminate Junk Removal
 > Chino · Ontario · Rancho Cucamonga · Chino Hills & surrounding areas
 
 ---
@@ -345,7 +345,7 @@ Every post below is fully written and ready to copy and paste. No blanks. No pla
 >
 > Every job is different, so text me a photo and I'll give you an exact number in minutes. What you see is what you pay — no "fuel surcharges" added at the end.
 >
-> 📞 **(909) 373-5516** — Sir Diego | Eliminate Junk Removal
+> 📞 **(909) 373-5516** — Diego | Eliminate Junk Removal
 
 ---
 
@@ -361,7 +361,7 @@ Every post below is fully written and ready to copy and paste. No blanks. No pla
 >
 > Don't take my word for it — give us a try. Free quote, zero pressure.
 >
-> 📞 **(909) 373-5516** — Sir Diego | Eliminate Junk Removal
+> 📞 **(909) 373-5516** — Diego | Eliminate Junk Removal
 
 ---
 
@@ -372,7 +372,7 @@ Every post below is fully written and ready to copy and paste. No blanks. No pla
 >
 > One phone call and it's handled.
 >
-> 📞 **(909) 373-5516** — Sir Diego | Eliminate Junk Removal
+> 📞 **(909) 373-5516** — Diego | Eliminate Junk Removal
 > Chino · Ontario · Rancho Cucamonga · Chino Hills 🤙
 
 ---
@@ -388,7 +388,7 @@ Every post below is fully written and ready to copy and paste. No blanks. No pla
 > ✔️ We haul furniture, appliances, yard waste, construction debris & more
 > ✔️ Sweep up included
 >
-> 📞 **Text Sir Diego: (909) 373-5516**
+> 📞 **Text Diego: (909) 373-5516**
 > — Eliminate Junk Removal
 
 ---
@@ -403,7 +403,7 @@ Every post below is fully written and ready to copy and paste. No blanks. No pla
 > But if you're ready to finally take that room back, we can have it cleared out in a single afternoon.
 >
 > DM me or text for a same-week appointment. 📞 **(909) 373-5516)**
-> — Sir Diego | Eliminate Junk Removal | Inland Empire
+> — Diego | Eliminate Junk Removal | Inland Empire
 
 ---
 
@@ -416,7 +416,7 @@ Every post below is fully written and ready to copy and paste. No blanks. No pla
 >
 > If you or someone you know is going through this, please reach out. We'll handle it with the respect it deserves.
 >
-> 📞 **(909) 373-5516** — Sir Diego | Eliminate Junk Removal
+> 📞 **(909) 373-5516** — Diego | Eliminate Junk Removal
 > Serving the Inland Empire 💙
 
 ---
@@ -436,7 +436,7 @@ Every post below is fully written and ready to copy and paste. No blanks. No pla
 >
 > Fast, affordable, and we sweep up when we leave.
 >
-> 📞 **(909) 373-5516** — Sir Diego | Eliminate Junk Removal
+> 📞 **(909) 373-5516** — Diego | Eliminate Junk Removal
 
 ---
 
@@ -451,7 +451,7 @@ Every post below is fully written and ready to copy and paste. No blanks. No pla
 > ✅ Fast, professional service
 > ✅ Serving landlords throughout the Inland Empire
 >
-> 📞 **Call or text Sir Diego: (909) 373-5516)**
+> 📞 **Call or text Diego: (909) 373-5516)**
 > — Eliminate Junk Removal
 
 ---
@@ -466,7 +466,7 @@ Every post below is fully written and ready to copy and paste. No blanks. No pla
 > I'll answer every single comment. No sales pitch — just real answers from a local guy who does this every day.
 >
 > And if you're ready to book: 📞 **(909) 373-5516)**
-> — Sir Diego | Eliminate Junk Removal | Chino · Ontario · Rancho Cucamonga
+> — Diego | Eliminate Junk Removal | Chino · Ontario · Rancho Cucamonga
 
 ---
 
@@ -479,7 +479,7 @@ Every post below is fully written and ready to copy and paste. No blanks. No pla
 >
 > Text me what you need hauled and I'll give you a flat-rate quote fast. I have openings this week.
 >
-> 📞 **(909) 373-5516** — Sir Diego | Eliminate Junk Removal
+> 📞 **(909) 373-5516** — Diego | Eliminate Junk Removal
 > Chino · Ontario · Rancho Cucamonga · Chino Hills
 
 ---
@@ -493,7 +493,7 @@ Every post below is fully written and ready to copy and paste. No blanks. No pla
 >
 > If you've been holding onto items because you didn't know how to dispose of them responsibly, let us handle it the right way.
 >
-> 📞 **(909) 373-5516** — Sir Diego | Eliminate Junk Removal
+> 📞 **(909) 373-5516** — Diego | Eliminate Junk Removal
 > Proudly serving the Inland Empire ♻️🗑️
 
 ---
@@ -507,7 +507,7 @@ Every post below is fully written and ready to copy and paste. No blanks. No pla
 >
 > And if you haven't used us yet — we're still here, still showing up every day, still giving honest prices and getting the work done right.
 >
-> 📞 **(909) 373-5516** — Sir Diego | Eliminate Junk Removal
+> 📞 **(909) 373-5516** — Diego | Eliminate Junk Removal
 > Chino · Ontario · Rancho Cucamonga · Chino Hills & the Inland Empire ⭐
 
 ---
@@ -549,7 +549,7 @@ BULLET LIST of services (easy to skim)
 ↓
 CALL TO ACTION (phone number, bold)
 ↓
-SIGN-OFF (Sir Diego | Eliminate Junk Removal)
+SIGN-OFF (Diego | Eliminate Junk Removal)
 ```
 
 ### Hashtags (Use on Facebook Posts — Not Nextdoor)
@@ -570,4 +570,4 @@ SIGN-OFF (Sir Diego | Eliminate Junk Removal)
 
 ---
 
-*— Sir Diego | Eliminate Junk Removal | 📞 (909) 373-5516 | Serving Chino, Ontario, Rancho Cucamonga, Chino Hills & the Inland Empire*
+*— Diego | Eliminate Junk Removal | 📞 (909) 373-5516 | Serving Chino, Ontario, Rancho Cucamonga, Chino Hills & the Inland Empire*
