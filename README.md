@@ -1,6 +1,6 @@
 # Lyra — Eliminate Junk Removal Marketing
 
-Marketing content and social media playbook for **Eliminate Junk Removal** (Diego, Inland Empire, CA).
+Marketing content and social media playbook for **Eliminate Junk Removal** (Sir Diego, Inland Empire, CA).
 
 ## Contents
 
