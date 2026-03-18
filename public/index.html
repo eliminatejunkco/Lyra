@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lyra – Job Manager | Eliminate Junk Co</title>
+  <style>
+    /* ── Reset / Base ───────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --green:   #16a34a;
+      --green-d: #15803d;
+      --green-l: #dcfce7;
+      --gray-50: #f9fafb;
+      --gray-100:#f3f4f6;
+      --gray-200:#e5e7eb;
+      --gray-400:#9ca3af;
+      --gray-600:#4b5563;
+      --gray-700:#374151;
+      --gray-800:#1f2937;
+      --red:     #dc2626;
+      --amber:   #d97706;
+      --blue:    #2563eb;
+      --purple:  #7c3aed;
+      --radius:  8px;
+      --shadow:  0 1px 3px rgba(0,0,0,.12), 0 1px 2px rgba(0,0,0,.08);
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--gray-50);
+      color: var(--gray-800);
+      min-height: 100vh;
+    }
+
+    /* ── Layout ─────────────────────────────────────────── */
+    header {
+      background: var(--green);
+      color: #fff;
+      padding: 0 24px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: var(--shadow);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    header h1 { font-size: 1.25rem; font-weight: 700; letter-spacing: -.5px; }
+    header span { font-size: .85rem; opacity: .85; }
+
+    main { max-width: 1200px; margin: 0 auto; padding: 24px 16px; }
+
+    /* ── Stats bar ──────────────────────────────────────── */
+    .stats { display: grid; grid-template-columns: repeat(auto-fill, minmax(148px, 1fr)); gap: 12px; margin-bottom: 28px; }
+    .stat-card {
+      background: #fff;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 16px;
+      text-align: center;
+    }
+    .stat-card .value { font-size: 2rem; font-weight: 700; line-height: 1; }
+    .stat-card .label { font-size: .75rem; color: var(--gray-600); margin-top: 4px; text-transform: uppercase; letter-spacing: .05em; }
+    .stat-card.lead   .value { color: var(--blue); }
+    .stat-card.quoted .value { color: var(--amber); }
+    .stat-card.sched  .value { color: var(--purple); }
+    .stat-card.done   .value { color: var(--green); }
+    .stat-card.rev    .value { color: var(--green-d); font-size: 1.5rem; }
+
+    /* ── Toolbar ────────────────────────────────────────── */
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+    .toolbar input[type=search] {
+      flex: 1 1 180px;
+      padding: 8px 12px;
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius);
+      font-size: .9rem;
+      outline: none;
+      background: #fff;
+    }
+    .toolbar input[type=search]:focus { border-color: var(--green); }
+    .toolbar select {
+      padding: 8px 12px;
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius);
+      font-size: .9rem;
+      background: #fff;
+      cursor: pointer;
+    }
+    .btn {
+      padding: 8px 18px;
+      border: none;
+      border-radius: var(--radius);
+      font-size: .9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: opacity .15s;
+    }
+    .btn:hover { opacity: .88; }
+    .btn-primary { background: var(--green); color: #fff; }
+    .btn-danger  { background: var(--red);   color: #fff; }
+    .btn-ghost   { background: var(--gray-200); color: var(--gray-700); }
+
+    /* ── Table ──────────────────────────────────────────── */
+    .table-wrap { overflow-x: auto; background: #fff; border-radius: var(--radius); box-shadow: var(--shadow); }
+    table { width: 100%; border-collapse: collapse; font-size: .9rem; }
+    thead th {
+      background: var(--gray-100);
+      padding: 10px 14px;
+      text-align: left;
+      font-size: .75rem;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: var(--gray-600);
+      border-bottom: 1px solid var(--gray-200);
+      white-space: nowrap;
+    }
+    tbody tr { border-bottom: 1px solid var(--gray-100); transition: background .1s; }
+    tbody tr:last-child { border-bottom: none; }
+    tbody tr:hover { background: var(--gray-50); }
+    tbody td { padding: 11px 14px; vertical-align: middle; }
+    .td-actions { display: flex; gap: 6px; }
+    .btn-sm { padding: 4px 10px; font-size: .78rem; }
+    .empty { text-align: center; padding: 48px; color: var(--gray-400); }
+
+    /* ── Status badges ──────────────────────────────────── */
+    .badge {
+      display: inline-block;
+      padding: 2px 9px;
+      border-radius: 999px;
+      font-size: .75rem;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .badge-Lead       { background: #dbeafe; color: #1d4ed8; }
+    .badge-Quoted     { background: #fef3c7; color: #92400e; }
+    .badge-Scheduled  { background: #ede9fe; color: #5b21b6; }
+    .badge-In-Progress{ background: #ffedd5; color: #9a3412; }
+    .badge-Completed  { background: var(--green-l); color: #14532d; }
+    .badge-Cancelled  { background: var(--gray-100); color: var(--gray-600); }
+
+    /* ── Modal ──────────────────────────────────────────── */
+    .overlay {
+      display: none;
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,.45);
+      z-index: 200;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+    .overlay.open { display: flex; }
+    .modal {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.25);
+      width: 100%;
+      max-width: 600px;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+    .modal-header {
+      padding: 20px 24px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .modal-header h2 { font-size: 1.15rem; }
+    .modal-close { background: none; border: none; font-size: 1.4rem; cursor: pointer; color: var(--gray-400); line-height: 1; }
+    .modal-close:hover { color: var(--gray-800); }
+    .modal-body { padding: 20px 24px; }
+    .modal-footer { padding: 0 24px 20px; display: flex; justify-content: flex-end; gap: 10px; }
+
+    /* ── Form ───────────────────────────────────────────── */
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    @media (max-width: 500px) { .form-grid { grid-template-columns: 1fr; } }
+    .form-group { display: flex; flex-direction: column; gap: 4px; }
+    .form-group.full { grid-column: 1 / -1; }
+    label { font-size: .8rem; font-weight: 600; color: var(--gray-700); }
+    input, select, textarea {
+      padding: 8px 10px;
+      border: 1px solid var(--gray-200);
+      border-radius: 6px;
+      font-size: .9rem;
+      font-family: inherit;
+      outline: none;
+      transition: border-color .15s;
+    }
+    input:focus, select:focus, textarea:focus { border-color: var(--green); }
+    textarea { resize: vertical; min-height: 72px; }
+    .error-msg { color: var(--red); font-size: .8rem; margin-top: 8px; }
+
+    /* ── Confirm dialog ─────────────────────────────────── */
+    .confirm-overlay {
+      display: none;
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,.5);
+      z-index: 300;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+    .confirm-overlay.open { display: flex; }
+    .confirm-box {
+      background: #fff;
+      border-radius: 10px;
+      padding: 28px 28px 22px;
+      max-width: 360px;
+      width: 100%;
+      box-shadow: 0 8px 32px rgba(0,0,0,.2);
+      text-align: center;
+    }
+    .confirm-box p { margin-bottom: 20px; color: var(--gray-700); }
+    .confirm-box .actions { display: flex; gap: 10px; justify-content: center; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>⚡ Lyra – Job Manager</h1>
+  <span>Eliminate Junk Co</span>
+</header>
+
+<main>
+
+  <!-- Stats -->
+  <div class="stats" id="stats">
+    <div class="stat-card lead">  <div class="value" id="s-Lead">–</div>      <div class="label">Leads</div></div>
+    <div class="stat-card quoted"><div class="value" id="s-Quoted">–</div>    <div class="label">Quoted</div></div>
+    <div class="stat-card sched"> <div class="value" id="s-Scheduled">–</div> <div class="label">Scheduled</div></div>
+    <div class="stat-card sched"> <div class="value" id="s-In Progress">–</div><div class="label">In Progress</div></div>
+    <div class="stat-card done">  <div class="value" id="s-Completed">–</div> <div class="label">Completed</div></div>
+    <div class="stat-card rev">   <div class="value" id="s-revenue">–</div>   <div class="label">Revenue ($)</div></div>
+  </div>
+
+  <!-- Toolbar -->
+  <div class="toolbar">
+    <input type="search" id="search" placeholder="Search by name, address, phone…" />
+    <select id="filterStatus">
+      <option value="">All Statuses</option>
+      <option>Lead</option>
+      <option>Quoted</option>
+      <option>Scheduled</option>
+      <option>In Progress</option>
+      <option>Completed</option>
+      <option>Cancelled</option>
+    </select>
+    <button class="btn btn-primary" onclick="openModal()">+ New Job</button>
+  </div>
+
+  <!-- Table -->
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Customer</th>
+          <th>Phone</th>
+          <th>Address</th>
+          <th>Status</th>
+          <th>Job Date</th>
+          <th>Estimate</th>
+          <th>Actual</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="jobsBody">
+        <tr><td colspan="9" class="empty">Loading…</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+</main>
+
+<!-- Add / Edit Modal -->
+<div class="overlay" id="modalOverlay">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-header">
+      <h2 id="modalTitle">New Job</h2>
+      <button class="modal-close" onclick="closeModal()" aria-label="Close">&times;</button>
+    </div>
+    <div class="modal-body">
+      <form id="jobForm" onsubmit="submitJob(event)">
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="f-customer">Customer Name *</label>
+            <input id="f-customer" name="customer" required />
+          </div>
+          <div class="form-group">
+            <label for="f-phone">Phone</label>
+            <input id="f-phone" name="phone" type="tel" />
+          </div>
+          <div class="form-group">
+            <label for="f-email">Email</label>
+            <input id="f-email" name="email" type="email" />
+          </div>
+          <div class="form-group">
+            <label for="f-status">Status</label>
+            <select id="f-status" name="status">
+              <option>Lead</option>
+              <option>Quoted</option>
+              <option>Scheduled</option>
+              <option>In Progress</option>
+              <option>Completed</option>
+              <option>Cancelled</option>
+            </select>
+          </div>
+          <div class="form-group full">
+            <label for="f-address">Address</label>
+            <input id="f-address" name="address" />
+          </div>
+          <div class="form-group full">
+            <label for="f-description">Job Description</label>
+            <input id="f-description" name="description" placeholder="e.g. Full house cleanout, old furniture removal…" />
+          </div>
+          <div class="form-group">
+            <label for="f-job_date">Job Date</label>
+            <input id="f-job_date" name="job_date" type="date" />
+          </div>
+          <div class="form-group">
+            <label for="f-estimate">Estimate ($)</label>
+            <input id="f-estimate" name="estimate" type="number" min="0" step="0.01" />
+          </div>
+          <div class="form-group">
+            <label for="f-actual">Actual Charged ($)</label>
+            <input id="f-actual" name="actual" type="number" min="0" step="0.01" />
+          </div>
+          <div class="form-group full">
+            <label for="f-notes">Notes</label>
+            <textarea id="f-notes" name="notes"></textarea>
+          </div>
+        </div>
+        <div class="error-msg" id="formError"></div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-ghost" onclick="closeModal()">Cancel</button>
+      <button class="btn btn-primary" onclick="document.getElementById('jobForm').requestSubmit()">Save Job</button>
+    </div>
+  </div>
+</div>
+
+<!-- Confirm Delete -->
+<div class="confirm-overlay" id="confirmOverlay">
+  <div class="confirm-box">
+    <p>Delete this job? This cannot be undone.</p>
+    <div class="actions">
+      <button class="btn btn-ghost" onclick="closeConfirm()">Cancel</button>
+      <button class="btn btn-danger" id="confirmDeleteBtn">Delete</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  // ── State ────────────────────────────────────────────────
+  let editingId = null;
+  let deleteId  = null;
+  let debounceTimer;
+
+  // ── Boot ─────────────────────────────────────────────────
+  loadStats();
+  loadJobs();
+
+  // ── Search / filter ──────────────────────────────────────
+  document.getElementById('search').addEventListener('input', () => {
+    clearTimeout(debounceTimer);
+    debounceTimer = setTimeout(loadJobs, 300);
+  });
+  document.getElementById('filterStatus').addEventListener('change', loadJobs);
+
+  // ── Helpers ───────────────────────────────────────────────
+  function formatDate(iso) {
+    // Parse YYYY-MM-DD as local date (splitting avoids UTC-midnight offset issues)
+    const [y, m, d] = iso.split('-').map(Number);
+    return new Date(y, m - 1, d).toLocaleDateString('en-US', {month: 'short', day: 'numeric', year: 'numeric'});
+  }
+
+  // ── Data loaders ─────────────────────────────────────────
+  async function loadStats() {
+    const data = await fetch('/api/stats').then(r => r.json());
+    ['Lead', 'Quoted', 'Scheduled', 'In Progress', 'Completed'].forEach(s => {
+      const el = document.getElementById('s-' + s);
+      if (el) el.textContent = data[s] ?? 0;
+    });
+    document.getElementById('s-revenue').textContent =
+      '$' + (data.revenue || 0).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+  }
+
+  async function loadJobs() {
+    const q      = encodeURIComponent(document.getElementById('search').value.trim());
+    const status = encodeURIComponent(document.getElementById('filterStatus').value);
+    const params = [];
+    if (q)      params.push('q=' + q);
+    if (status) params.push('status=' + status);
+    const url  = '/api/jobs' + (params.length ? '?' + params.join('&') : '');
+    const jobs = await fetch(url).then(r => r.json());
+    renderJobs(jobs);
+  }
+
+  // ── Render ────────────────────────────────────────────────
+  function renderJobs(jobs) {
+    const tbody = document.getElementById('jobsBody');
+    if (!jobs.length) {
+      tbody.innerHTML = '<tr><td colspan="9" class="empty">No jobs found.</td></tr>';
+      return;
+    }
+    tbody.innerHTML = jobs.map(j => {
+      const badgeClass = 'badge badge-' + j.status.replace(' ', '-');
+      const date = j.job_date ? formatDate(j.job_date) : '—';
+      const est  = j.estimate != null ? '$' + Number(j.estimate).toLocaleString('en-US', {minimumFractionDigits:2}) : '—';
+      const act  = j.actual   != null ? '$' + Number(j.actual).toLocaleString('en-US', {minimumFractionDigits:2}) : '—';
+      return `
+        <tr>
+          <td>${j.id}</td>
+          <td><strong>${esc(j.customer)}</strong>${j.email ? '<br><small style="color:var(--gray-400)">' + esc(j.email) + '</small>' : ''}</td>
+          <td>${esc(j.phone || '—')}</td>
+          <td>${esc(j.address || '—')}</td>
+          <td><span class="${badgeClass}">${esc(j.status)}</span></td>
+          <td>${date}</td>
+          <td>${est}</td>
+          <td>${act}</td>
+          <td>
+            <div class="td-actions">
+              <button class="btn btn-ghost btn-sm" onclick="openModal(${j.id})">Edit</button>
+              <button class="btn btn-danger btn-sm" onclick="confirmDelete(${j.id})">Delete</button>
+            </div>
+          </td>
+        </tr>`;
+    }).join('');
+  }
+
+  function esc(str) {
+    return String(str ?? '')
+      .replace(/&/g,'&amp;')
+      .replace(/</g,'&lt;')
+      .replace(/>/g,'&gt;')
+      .replace(/"/g,'&quot;');
+  }
+
+  // ── Modal ─────────────────────────────────────────────────
+  async function openModal(id) {
+    editingId = id || null;
+    document.getElementById('formError').textContent = '';
+    document.getElementById('jobForm').reset();
+    document.getElementById('modalTitle').textContent = id ? 'Edit Job' : 'New Job';
+
+    if (id) {
+      const job = await fetch('/api/jobs/' + id).then(r => r.json());
+      document.getElementById('f-customer').value    = job.customer    || '';
+      document.getElementById('f-phone').value       = job.phone       || '';
+      document.getElementById('f-email').value       = job.email       || '';
+      document.getElementById('f-address').value     = job.address     || '';
+      document.getElementById('f-description').value = job.description || '';
+      document.getElementById('f-status').value      = job.status      || 'Lead';
+      document.getElementById('f-job_date').value    = job.job_date    || '';
+      document.getElementById('f-estimate').value    = job.estimate    != null ? job.estimate : '';
+      document.getElementById('f-actual').value      = job.actual      != null ? job.actual   : '';
+      document.getElementById('f-notes').value       = job.notes       || '';
+    }
+
+    document.getElementById('modalOverlay').classList.add('open');
+    document.getElementById('f-customer').focus();
+  }
+
+  function closeModal() {
+    document.getElementById('modalOverlay').classList.remove('open');
+    editingId = null;
+  }
+
+  async function submitJob(e) {
+    e.preventDefault();
+    const form = e.target;
+    const data = Object.fromEntries(new FormData(form).entries());
+
+    const url    = editingId ? '/api/jobs/' + editingId : '/api/jobs';
+    const method = editingId ? 'PUT' : 'POST';
+
+    const res = await fetch(url, {
+      method,
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(data)
+    });
+
+    if (!res.ok) {
+      const err = await res.json();
+      document.getElementById('formError').textContent = (err.errors || [err.error]).join(', ');
+      return;
+    }
+
+    closeModal();
+    loadJobs();
+    loadStats();
+  }
+
+  // ── Delete ────────────────────────────────────────────────
+  function confirmDelete(id) {
+    deleteId = id;
+    document.getElementById('confirmOverlay').classList.add('open');
+    document.getElementById('confirmDeleteBtn').onclick = doDelete;
+  }
+
+  function closeConfirm() {
+    deleteId = null;
+    document.getElementById('confirmOverlay').classList.remove('open');
+  }
+
+  async function doDelete() {
+    await fetch('/api/jobs/' + deleteId, { method: 'DELETE' });
+    closeConfirm();
+    loadJobs();
+    loadStats();
+  }
+
+  // ── Close modal on overlay click ──────────────────────────
+  document.getElementById('modalOverlay').addEventListener('click', e => {
+    if (e.target === document.getElementById('modalOverlay')) closeModal();
+  });
+  document.getElementById('confirmOverlay').addEventListener('click', e => {
+    if (e.target === document.getElementById('confirmOverlay')) closeConfirm();
+  });
+
+  // ── Keyboard: Escape closes modals ────────────────────────
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') { closeModal(); closeConfirm(); }
+  });
+</script>
+</body>
+</html>
