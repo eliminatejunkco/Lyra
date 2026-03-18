@@ -1,5 +1,5 @@
 # More Ways to Get Junk Removal Jobs
-## Eliminate Junk Removal — Diego | (909) 373-5516
+## Eliminate Junk Removal — Sir Diego | (909) 373-5516
 
 > Beyond Facebook and Nextdoor, these platforms bring in extra calls every week — and most are free or low cost to use.
 
@@ -27,7 +27,7 @@ We haul it ALL away — furniture, appliances, garage cleanouts, estate cleanout
 ✅ Flat-rate pricing — no surprises
 ✅ We load, haul & sweep up
 ✅ No load minimum — single items welcome
-✅ Owner-operated — Diego is on every job
+✅ Owner-operated — Sir Diego is on every job
 
 📞 CALL OR TEXT FOR A FREE QUOTE: (909) 373-5516
 
@@ -178,4 +178,4 @@ Many cities have a local news/community blog (Patch, local Facebook pages, etc.)
 
 ---
 
-*— Diego | Eliminate Junk Removal | 📞 (909) 373-5516 | Serving the Inland Empire*
+*— Sir Diego | Eliminate Junk Removal | 📞 (909) 373-5516 | Serving the Inland Empire*

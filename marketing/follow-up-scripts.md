@@ -1,5 +1,5 @@
 # Follow-Up Scripts — Turn Leads Into Booked Jobs
-## Eliminate Junk Removal — Diego | (909) 373-5516
+## Eliminate Junk Removal — Sir Diego | (909) 373-5516
 
 > Most jobs are lost because no one follows up. These scripts close the gap between "I'll think about it" and a booked job.
 
@@ -21,7 +21,7 @@ A single follow-up text **within 24 hours** recovers 20–30% of those "lost" le
 *Use after someone calls but doesn't book.*
 
 ```
-Hey [Name], this is Diego from Eliminate Junk Removal — thanks for reaching out!
+Hey [Name], this is Sir Diego from Eliminate Junk Removal — thanks for reaching out!
 
 Just wanted to follow up: text me a quick photo of what you need hauled and I'll get you a flat-rate quote within the hour. No commitment, no pressure.
 
@@ -35,7 +35,7 @@ Just wanted to follow up: text me a quick photo of what you need hauled and I'll
 *Use when you gave a quote but haven't heard back.*
 
 ```
-Hey [Name], Diego here from Eliminate Junk Removal. Just checking in on the quote I sent over!
+Hey [Name], Sir Diego here from Eliminate Junk Removal. Just checking in on the quote I sent over!
 
 We still have openings this week — would love to get that taken care of for you. Any questions on the price, happy to chat.
 
@@ -49,7 +49,7 @@ We still have openings this week — would love to get that taken care of for yo
 *Use when someone said they'd call back but didn't.*
 
 ```
-Hey [Name]! Diego from Eliminate Junk Removal — you mentioned you'd think it over. Still have a spot available this week if you're ready to get it done. Just say the word and we'll get it on the schedule 👍
+Hey [Name]! Sir Diego from Eliminate Junk Removal — you mentioned you'd think it over. Still have a spot available this week if you're ready to get it done. Just say the word and we'll get it on the schedule 👍
 
 📞 (909) 373-5516
 ```
@@ -61,7 +61,7 @@ Hey [Name]! Diego from Eliminate Junk Removal — you mentioned you'd think it o
 *After someone comments "interested" or "how much?"*
 
 ```
-Hey [Name]! Diego here from Eliminate Junk Removal. I'll DM you right now with details! Or feel free to text me a photo of what you've got and I can give you a quick quote: (909) 373-5516 😊
+Hey [Name]! Sir Diego here from Eliminate Junk Removal. I'll DM you right now with details! Or feel free to text me a photo of what you've got and I can give you a quick quote: (909) 373-5516 😊
 ```
 
 ---
@@ -71,7 +71,7 @@ Hey [Name]! Diego here from Eliminate Junk Removal. I'll DM you right now with d
 *Use on leads that went cold.*
 
 ```
-Hey [Name], hope you're doing well! Diego from Eliminate Junk Removal here. I know it's been a while — just wanted to check in and see if you still needed help with that cleanout.
+Hey [Name], hope you're doing well! Sir Diego from Eliminate Junk Removal here. I know it's been a while — just wanted to check in and see if you still needed help with that cleanout.
 
 We're booking jobs this week and next — happy to work around your schedule. Text me anytime if you want to move forward!
 
@@ -90,7 +90,7 @@ Hey [Name], it was great working with you today! Really glad we could help get t
 If you have 30 seconds, a Google review would mean a ton to us — it helps other neighbors find us:
 [your Google review link]
 
-And if you ever need us again or know someone who does, just reach out. Thanks! — Diego
+And if you ever need us again or know someone who does, just reach out. Thanks! — Sir Diego
 ```
 
 ---
@@ -100,7 +100,7 @@ And if you ever need us again or know someone who does, just reach out. Thanks! 
 *Send to past customers before busy seasons (spring, summer, before holidays).*
 
 ```
-Hey [Name]! Diego from Eliminate Junk Removal — hope you're doing great!
+Hey [Name]! Sir Diego from Eliminate Junk Removal — hope you're doing great!
 
 Spring cleaning season is here and we're helping neighbors across [city] get their spaces cleared out. If you've got anything piling up, we're just a text away.
 
@@ -116,13 +116,13 @@ Also — if you know anyone who could use our help, we'd love the referral!
 *When reaching out to a realtor or PM you met or found online.*
 
 ```
-Hi [Name], my name is Diego — I run Eliminate Junk Removal in the Inland Empire. We specialize in fast, professional cleanouts for move-outs, estate sales, and tenant turnovers.
+Hi [Name], my name is Sir Diego — I run Eliminate Junk Removal in the Inland Empire. We specialize in fast, professional cleanouts for move-outs, estate sales, and tenant turnovers.
 
 If you ever need a reliable hauling crew between tenants or before a listing, I'd love to be your go-to. We offer same-week service, before/after photos, and flat-rate pricing.
 
 Happy to give you our contractor rate if we work together regularly. Let me know if you'd like to connect!
 
-— Diego | Eliminate Junk Removal | 📞 (909) 373-5516
+— Sir Diego | Eliminate Junk Removal | 📞 (909) 373-5516
 ```
 
 ---
@@ -132,7 +132,7 @@ Happy to give you our contractor rate if we work together regularly. Let me know
 When someone calls from an ad or referral:
 
 ```
-"Thanks for calling Eliminate Junk Removal, this is Diego! How can I help you today?"
+"Thanks for calling Eliminate Junk Removal, this is Sir Diego! How can I help you today?"
 
 [Let them explain what they need]
 
@@ -156,7 +156,7 @@ When someone calls from an ad or referral:
 > **The first person to respond usually gets the job.**
 
 - Aim to respond to every call, text, or DM **within 15 minutes** during business hours
-- If you miss a call, text back within 30 minutes: *"Hey [Name], sorry I missed your call — this is Diego from Eliminate Junk Removal! What can I help you with?"*
+- If you miss a call, text back within 30 minutes: *"Hey [Name], sorry I missed your call — this is Sir Diego from Eliminate Junk Removal! What can I help you with?"*
 - Turn on **do not disturb** only when physically on a job, and check messages the moment you finish
 
 ---
@@ -174,4 +174,4 @@ Review this list every morning and evening. No lead should go more than 48 hours
 
 ---
 
-*— Diego | Eliminate Junk Removal | 📞 (909) 373-5516 | Serving the Inland Empire*
+*— Sir Diego | Eliminate Junk Removal | 📞 (909) 373-5516 | Serving the Inland Empire*
