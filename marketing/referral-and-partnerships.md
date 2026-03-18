@@ -1,5 +1,5 @@
 # Referral Program & Partnership Outreach
-## Eliminate Junk Removal — Sir Diego | (909) 373-5516
+## Eliminate Junk Removal — Diego | (909) 373-5516
 
 > Word-of-mouth and referrals are the highest-converting, lowest-cost source of jobs. A simple referral program and a handful of the right business relationships can double your monthly call volume.
 
@@ -31,7 +31,7 @@ Tell every happy customer:
 ```
 Hey [Name], really appreciated working with you today! Quick thing — if anyone you know ever needs junk removal, just have them mention your name when they call. If they book, I'll send you $25 via Venmo as a thanks 🙏
 
-— Sir Diego | Eliminate Junk Removal | (909) 373-5516
+— Diego | Eliminate Junk Removal | (909) 373-5516
 ```
 
 ### Tracking Referrals
@@ -64,7 +64,7 @@ Keep a simple list in your Notes app:
 ```
 Hi [Name],
 
-My name is Sir Diego — I own Eliminate Junk Removal, a junk hauling and cleanout service based in the Inland Empire.
+My name is Diego — I own Eliminate Junk Removal, a junk hauling and cleanout service based in the Inland Empire.
 
 I work with several realtors and help them get properties market-ready fast — full cleanouts, furniture removal, estate clearing. We typically turn jobs around same week, provide before/after photos, and offer consistent pricing.
 
@@ -72,7 +72,7 @@ If you ever need a reliable crew for a listing cleanout or move-out situation, I
 
 Would a quick call this week work?
 
-— Sir Diego | Eliminate Junk Removal
+— Diego | Eliminate Junk Removal
 📞 (909) 373-5516
 ```
 
@@ -103,13 +103,13 @@ Would a quick call this week work?
 ```
 Hi [Name],
 
-I'm Sir Diego, owner of Eliminate Junk Removal in the Inland Empire. We specialize in fast tenant-turnover cleanouts for property managers and landlords.
+I'm Diego, owner of Eliminate Junk Removal in the Inland Empire. We specialize in fast tenant-turnover cleanouts for property managers and landlords.
 
 When a tenant leaves behind furniture, trash, or debris, we come out same-week and have the unit cleared so you can get it rerented fast. We provide before/after photos and flat-rate pricing so there are no surprises.
 
 If you'd like to put us on your vendor list, I'd be happy to offer a preferred rate. Happy to send a quote anytime — just text me a photo.
 
-— Sir Diego | Eliminate Junk Removal
+— Diego | Eliminate Junk Removal
 📞 (909) 373-5516
 ```
 
@@ -136,13 +136,13 @@ If you'd like to put us on your vendor list, I'd be happy to offer a preferred r
 ```
 Hey [Name]!
 
-I'm Sir Diego, I run Eliminate Junk Removal in the Inland Empire. I wanted to reach out because I think we could send each other work.
+I'm Diego, I run Eliminate Junk Removal in the Inland Empire. I wanted to reach out because I think we could send each other work.
 
 Whenever your jobs produce demo debris, old materials, or heavy items you can't haul — I can come out fast and handle it. And if any of my cleanout customers ask for a contractor referral, I'll send them your way.
 
 Interested in teaming up? Happy to connect over the phone or text.
 
-— Sir Diego | (909) 373-5516
+— Diego | (909) 373-5516
 ```
 
 ---
@@ -187,4 +187,4 @@ Even **2–3 reliable referral partners** sending you 1 job per month each = a s
 
 ---
 
-*— Sir Diego | Eliminate Junk Removal | 📞 (909) 373-5516 | Serving the Inland Empire*
+*— Diego | Eliminate Junk Removal | 📞 (909) 373-5516 | Serving the Inland Empire*

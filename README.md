@@ -1,8 +1,8 @@
 # Lyra — Eliminate Junk Removal Marketing
 
-Marketing content, scripts, and job-getting playbooks for **Eliminate Junk Removal** (Sir Diego, Inland Empire, CA).
+Marketing content, scripts, and job-getting playbooks for **Eliminate Junk Removal** (Diego, Inland Empire, CA).
 
-📞 **Call or Text Sir Diego: (909) 373-5516**
+📞 **Call or Text Diego: (909) 373-5516**
 
 ---
 

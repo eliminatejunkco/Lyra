@@ -1,5 +1,5 @@
 # Google Business Profile & Local Services Ads Guide
-## Eliminate Junk Removal — Sir Diego | (909) 373-5516
+## Eliminate Junk Removal — Diego | (909) 373-5516
 
 > **Why this matters:** When someone searches "junk removal near me" or "junk removal Chino CA," Google Business Profile is the first thing they see — before any website. A fully optimized profile drives free calls every week.
 
@@ -32,7 +32,7 @@
 | **Description** | See template below |
 
 **Profile Description Template:**
-> Eliminate Junk Removal is the Inland Empire's trusted junk hauling service, proudly serving Chino, Ontario, Rancho Cucamonga, Chino Hills, and surrounding cities. We specialize in same-day and next-day junk removal, furniture pickup, garage cleanouts, estate cleanouts, move-out cleanouts, appliance removal, and construction debris hauling. Owner-operated by Sir Diego — we show up on time, load everything, sweep up, and charge flat-rate prices with no hidden fees. Text or call for a free quote within minutes. Serving the Inland Empire since [year].
+> Eliminate Junk Removal is the Inland Empire's trusted junk hauling service, proudly serving Chino, Ontario, Rancho Cucamonga, Chino Hills, and surrounding cities. We specialize in same-day and next-day junk removal, furniture pickup, garage cleanouts, estate cleanouts, move-out cleanouts, appliance removal, and construction debris hauling. Owner-operated by Diego — we show up on time, load everything, sweep up, and charge flat-rate prices with no hidden fees. Text or call for a free quote within minutes. Serving the Inland Empire since [year].
 
 ---
 
@@ -57,7 +57,7 @@ Click **Services** in your dashboard and add each of the following with a short 
 Google ranks profiles with more photos higher. Upload:
 - **Minimum 10 photos** of past jobs (before/after are best)
 - Cover photo: your truck loaded with junk, clearly branded
-- A photo of Sir Diego in uniform or a t-shirt with the business name
+- A photo of Diego in uniform or a t-shirt with the business name
 - At least one photo per service type (garage, estate, furniture, yard)
 - Add new photos at least **once a week**
 
@@ -71,7 +71,7 @@ Reviews directly increase how often Google shows your profile.
 
 **How to ask for reviews:**
 - Right after completing a job say: *"Hey, I really appreciate your business! If you wouldn't mind leaving a quick Google review, it would help me out a ton. I can text you the link right now."*
-- Then text: `"Thanks again for choosing Eliminate Junk Removal! Here's my Google review link if you have 30 seconds — [your link]. Really appreciate it! — Sir Diego"`
+- Then text: `"Thanks again for choosing Eliminate Junk Removal! Here's my Google review link if you have 30 seconds — [your link]. Really appreciate it! — Diego"`
 
 **To get your review link:**
 1. Open Google Business Profile dashboard
@@ -147,4 +147,4 @@ With a $100–$150/week budget in the Inland Empire, expect:
 
 ---
 
-*— Sir Diego | Eliminate Junk Removal | 📞 (909) 373-5516 | Serving the Inland Empire*
+*— Diego | Eliminate Junk Removal | 📞 (909) 373-5516 | Serving the Inland Empire*
