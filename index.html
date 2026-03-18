@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lyra — AI Prompt Optimizer</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div id="app">
+    <!-- Header -->
+    <header class="header">
+      <div class="logo">
+        <span class="logo-icon">✦</span>
+        <span class="logo-text">Lyra</span>
+      </div>
+      <p class="tagline">AI Prompt Optimizer</p>
+    </header>
+
+    <!-- Chat window -->
+    <main class="chat-window" id="chatWindow" role="log" aria-live="polite" aria-label="Conversation"></main>
+
+    <!-- Input area -->
+    <footer class="input-area">
+      <div class="quick-actions" id="quickActions">
+        <button class="mode-btn" data-mode="DETAIL" aria-label="Select DETAIL mode">
+          DETAIL <span class="mode-hint">I'll ask questions</span>
+        </button>
+        <button class="mode-btn" data-mode="BASIC" aria-label="Select BASIC mode">
+          BASIC <span class="mode-hint">Quick fix</span>
+        </button>
+      </div>
+      <div class="input-row">
+        <textarea
+          id="userInput"
+          class="user-input"
+          placeholder="Type your prompt or message…"
+          rows="1"
+          aria-label="Your message"
+        ></textarea>
+        <button id="sendBtn" class="send-btn" aria-label="Send message">
+          <span class="send-icon">↑</span>
+        </button>
+      </div>
+    </footer>
+  </div>
+
+  <script src="lyra.js"></script>
+</body>
+</html>
