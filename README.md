@@ -20,13 +20,38 @@ analytics — all backed by a local SQLite database.
 
 ## Quick Start
 
+### Option A – Web UI (recommended)
+
+The easiest way to use Lyra is through the built-in browser interface.
+
+```bash
+pip install -e .
+python app.py
+```
+
+Then open **http://localhost:5000** in your browser. You'll see a dashboard
+with customer stats, campaign performance, and top service areas. From there
+you can add customers, create campaigns from ready-made templates, send
+campaigns, and view analytics — all without touching the command line.
+
+The database is created automatically at `~/.lyra/marketing.db` on first run.
+To use a different file, set the `LYRA_DB` environment variable:
+
+```bash
+LYRA_DB=/path/to/my.db python app.py
+```
+
+---
+
+### Option B – Command-Line Interface
+
 ### 1 – Install
 
 ```bash
 pip install -e .
 ```
 
-### 2 – Initialise the database
+### 2 – Initialize the database
 
 ```bash
 lyra init
@@ -93,6 +118,8 @@ lyra analytics monthly          # Monthly contact history
 ## Project Layout
 
 ```
+app.py                 Flask web application (run this to open the browser UI)
+
 lyra/
 ├── __init__.py        Package entry point
 ├── models.py          Data models (Customer, Campaign, CampaignRecipient, …)
@@ -102,6 +129,9 @@ lyra/
 ├── analytics.py       Reporting and statistics
 ├── templates.py       Pre-built email/SMS templates
 └── cli.py             Command-line interface
+
+templates/             Jinja2 HTML templates for the web UI
+static/                Bootstrap CSS/JS served locally (no internet required)
 
 tests/
 ├── test_customers.py

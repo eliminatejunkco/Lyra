@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+{% block title %}Customers{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+  <h1 class="h3 mb-0 fw-bold">Customers</h1>
+  <a href="{{ url_for('customer_new') }}" class="btn btn-primary">
+    <i class="bi bi-person-plus"></i> Add Customer
+  </a>
+</div>
+
+<!-- Filters -->
+<div class="card mb-3">
+  <div class="card-body py-2">
+    <form method="get" class="row g-2 align-items-end">
+      <div class="col-auto">
+        <label class="form-label small mb-1">Status</label>
+        <select name="status" class="form-select form-select-sm">
+          <option value="">All</option>
+          {% for s in statuses %}
+          <option value="{{ s }}" {% if s == status_filter %}selected{% endif %}>{{ s|capitalize }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="col-auto">
+        <label class="form-label small mb-1">Zip Code</label>
+        <input type="text" name="zip" class="form-control form-control-sm" placeholder="e.g. 12345"
+               value="{{ zip_filter }}">
+      </div>
+      <div class="col-auto">
+        <label class="form-label small mb-1">Tag</label>
+        <input type="text" name="tag" class="form-control form-control-sm" placeholder="e.g. residential"
+               value="{{ tag_filter }}">
+      </div>
+      <div class="col-auto">
+        <button type="submit" class="btn btn-sm btn-outline-primary">Filter</button>
+        <a href="{{ url_for('customers_list') }}" class="btn btn-sm btn-outline-secondary ms-1">Clear</a>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-body p-0">
+    {% if customers %}
+    <table class="table table-hover mb-0">
+      <thead>
+        <tr>
+          <th class="ps-3">Name</th>
+          <th>Phone</th>
+          <th>Email</th>
+          <th>City / Zip</th>
+          <th>Status</th>
+          <th>Tags</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for c in customers %}
+        <tr>
+          <td class="ps-3 fw-medium">
+            <a href="{{ url_for('customer_detail', customer_id=c.id) }}"
+               class="text-decoration-none">{{ c.name }}</a>
+          </td>
+          <td>{{ c.phone }}</td>
+          <td class="text-truncate" style="max-width:180px;">{{ c.email }}</td>
+          <td>{{ c.city }}, {{ c.zip_code }}</td>
+          <td><span class="badge badge-status-{{ c.status.value }}">{{ c.status.value }}</span></td>
+          <td>
+            {% for tag in c.tags %}
+            <span class="badge bg-light text-dark border">{{ tag }}</span>
+            {% endfor %}
+          </td>
+          <td class="text-end pe-3">
+            <a href="{{ url_for('customer_edit', customer_id=c.id) }}"
+               class="btn btn-sm btn-outline-secondary py-0">Edit</a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <div class="px-3 py-2 text-muted small border-top">{{ customers|length }} customer(s)</div>
+    {% else %}
+    <div class="text-center text-muted py-5">
+      No customers found.
+      <a href="{{ url_for('customer_new') }}">Add one →</a>
+    </div>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

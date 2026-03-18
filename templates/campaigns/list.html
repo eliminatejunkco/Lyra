@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% block title %}Campaigns{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+  <h1 class="h3 mb-0 fw-bold">Campaigns</h1>
+  <a href="{{ url_for('campaign_new') }}" class="btn btn-primary">
+    <i class="bi bi-megaphone"></i> New Campaign
+  </a>
+</div>
+
+<!-- Filter -->
+<div class="card mb-3">
+  <div class="card-body py-2">
+    <form method="get" class="row g-2 align-items-end">
+      <div class="col-auto">
+        <label class="form-label small mb-1">Status</label>
+        <select name="status" class="form-select form-select-sm">
+          <option value="">All</option>
+          {% for s in statuses %}
+          <option value="{{ s }}" {% if s == status_filter %}selected{% endif %}>
+            {{ s|capitalize }}
+          </option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="col-auto">
+        <button type="submit" class="btn btn-sm btn-outline-primary">Filter</button>
+        <a href="{{ url_for('campaigns_list') }}" class="btn btn-sm btn-outline-secondary ms-1">Clear</a>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-body p-0">
+    {% if campaigns %}
+    <table class="table table-hover mb-0">
+      <thead>
+        <tr>
+          <th class="ps-3">Name</th>
+          <th>Type</th>
+          <th>Status</th>
+          <th>Targeting</th>
+          <th>Sent At</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for c in campaigns %}
+        <tr>
+          <td class="ps-3 fw-medium">
+            <a href="{{ url_for('campaign_detail', campaign_id=c.id) }}"
+               class="text-decoration-none">{{ c.name }}</a>
+          </td>
+          <td><span class="badge bg-light text-dark border">{{ c.campaign_type.value }}</span></td>
+          <td><span class="badge badge-status-{{ c.status.value }}">{{ c.status.value }}</span></td>
+          <td class="small text-muted">
+            {% if c.target_zip_codes %}Zip: {{ c.target_zip_codes|join(', ') }}<br>{% endif %}
+            {% if c.target_statuses %}Status: {{ c.target_statuses|join(', ') }}{% endif %}
+          </td>
+          <td class="text-muted small">
+            {{ c.sent_at.strftime('%b %d, %Y') if c.sent_at else '—' }}
+          </td>
+          <td class="text-end pe-3">
+            <a href="{{ url_for('campaign_detail', campaign_id=c.id) }}"
+               class="btn btn-sm btn-outline-secondary py-0">View</a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <div class="px-3 py-2 text-muted small border-top">{{ campaigns|length }} campaign(s)</div>
+    {% else %}
+    <div class="text-center text-muted py-5">
+      No campaigns yet. <a href="{{ url_for('campaign_new') }}">Create one →</a>
+    </div>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

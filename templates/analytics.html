@@ -1,0 +1,166 @@
+{% extends "base.html" %}
+{% block title %}Analytics{% endblock %}
+
+{% block content %}
+<h1 class="h3 fw-bold mb-4">Analytics</h1>
+
+<div class="row g-4">
+
+  <!-- Customer Summary -->
+  <div class="col-md-6 col-lg-4">
+    <div class="card">
+      <div class="card-header bg-white fw-semibold">Customer Summary</div>
+      <div class="card-body p-0">
+        <table class="table mb-0">
+          <tbody>
+            <tr>
+              <td class="ps-3 fw-medium">Total</td>
+              <td class="text-end pe-3 fw-bold fs-5">{{ summary.total }}</td>
+            </tr>
+            <tr>
+              <td class="ps-3">
+                <span class="badge badge-status-lead">Lead</span>
+              </td>
+              <td class="text-end pe-3">{{ summary.lead }}</td>
+            </tr>
+            <tr>
+              <td class="ps-3">
+                <span class="badge badge-status-active">Active</span>
+              </td>
+              <td class="text-end pe-3">{{ summary.active }}</td>
+            </tr>
+            <tr>
+              <td class="ps-3">
+                <span class="badge badge-status-inactive">Inactive</span>
+              </td>
+              <td class="text-end pe-3">{{ summary.inactive }}</td>
+            </tr>
+            <tr>
+              <td class="ps-3">
+                <span class="badge badge-status-churned">Churned</span>
+              </td>
+              <td class="text-end pe-3">{{ summary.churned }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Top Zip Codes -->
+  <div class="col-md-6 col-lg-4">
+    <div class="card">
+      <div class="card-header bg-white fw-semibold">Top Service Areas (Zip Codes)</div>
+      <div class="card-body">
+        {% if zips %}
+          {% set max_count = zips[0].count %}
+          {% for z in zips %}
+          <div class="mb-2">
+            <div class="d-flex justify-content-between small mb-1">
+              <span class="fw-medium">{{ z.zip_code }}</span>
+              <span class="text-muted">{{ z.count }}</span>
+            </div>
+            <div class="progress" style="height:8px;">
+              <div class="progress-bar bg-primary"
+                   style="width:{{ (z.count / max_count * 100)|int }}%"></div>
+            </div>
+          </div>
+          {% endfor %}
+        {% else %}
+          <div class="text-muted text-center py-3">No data yet.</div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  <!-- Monthly Contacts -->
+  <div class="col-md-6 col-lg-4">
+    <div class="card">
+      <div class="card-header bg-white fw-semibold">Monthly Contacts</div>
+      <div class="card-body p-0">
+        {% if monthly %}
+        <table class="table mb-0">
+          <thead><tr><th class="ps-3">Month</th><th class="text-end pe-3">Contacts</th></tr></thead>
+          <tbody>
+            {% for row in monthly %}
+            <tr>
+              <td class="ps-3">{{ row.month }}</td>
+              <td class="text-end pe-3 fw-medium">{{ row.contacts }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        {% else %}
+          <div class="text-muted text-center py-4">No contact history yet.</div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  <!-- Campaign Performance -->
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header bg-white fw-semibold">Campaign Performance</div>
+      <div class="card-body p-0">
+        {% if perf %}
+        <table class="table table-hover mb-0">
+          <thead>
+            <tr>
+              <th class="ps-3">Campaign</th>
+              <th>Sent</th>
+              <th>Opened</th>
+              <th>Clicked</th>
+              <th>Responded</th>
+              <th>Open Rate</th>
+              <th>Click Rate</th>
+              <th>Response Rate</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for row in perf %}
+            <tr>
+              <td class="ps-3">
+                <a href="{{ url_for('campaign_detail', campaign_id=row.campaign_id) }}"
+                   class="text-decoration-none fw-medium">{{ row.campaign_name }}</a>
+              </td>
+              <td>{{ row.sent }}</td>
+              <td>{{ row.opened }}</td>
+              <td>{{ row.clicked }}</td>
+              <td>{{ row.responded }}</td>
+              <td>
+                <div class="d-flex align-items-center gap-2">
+                  <div class="progress flex-grow-1" style="height:6px;min-width:60px;">
+                    <div class="progress-bar bg-info" style="width:{{ row.open_rate }}%"></div>
+                  </div>
+                  {{ row.open_rate }}%
+                </div>
+              </td>
+              <td>
+                <div class="d-flex align-items-center gap-2">
+                  <div class="progress flex-grow-1" style="height:6px;min-width:60px;">
+                    <div class="progress-bar bg-warning" style="width:{{ row.click_rate }}%"></div>
+                  </div>
+                  {{ row.click_rate }}%
+                </div>
+              </td>
+              <td>
+                <div class="d-flex align-items-center gap-2">
+                  <div class="progress flex-grow-1" style="height:6px;min-width:60px;">
+                    <div class="progress-bar bg-success" style="width:{{ row.response_rate }}%"></div>
+                  </div>
+                  {{ row.response_rate }}%
+                </div>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        {% else %}
+          <div class="text-muted text-center py-5">No campaign data yet.</div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+</div>
+{% endblock %}

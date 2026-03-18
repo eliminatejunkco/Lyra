@@ -1,0 +1,156 @@
+{% extends "base.html" %}
+{% block title %}{{ campaign.name }}{% endblock %}
+
+{% block content %}
+<div class="d-flex align-items-center mb-4 gap-2">
+  <a href="{{ url_for('campaigns_list') }}" class="btn btn-sm btn-outline-secondary">
+    <i class="bi bi-arrow-left"></i>
+  </a>
+  <h1 class="h3 mb-0 fw-bold">{{ campaign.name }}</h1>
+  <span class="badge badge-status-{{ campaign.status.value }} ms-1">{{ campaign.status.value }}</span>
+  <div class="ms-auto d-flex gap-2">
+    {% if campaign.status.value != 'sent' %}
+    <form method="post" action="{{ url_for('campaign_send', campaign_id=campaign.id) }}"
+          onsubmit="return confirm('Send this campaign to {{ recipients|length }} recipient(s)?');">
+      <button type="submit" class="btn btn-sm btn-success">
+        <i class="bi bi-send"></i> Send to {{ recipients|length }} Recipient(s)
+      </button>
+    </form>
+    {% endif %}
+    <form method="post" action="{{ url_for('campaign_delete', campaign_id=campaign.id) }}"
+          onsubmit="return confirm('Delete this campaign? This cannot be undone.');">
+      <button type="submit" class="btn btn-sm btn-outline-danger">
+        <i class="bi bi-trash"></i>
+      </button>
+    </form>
+  </div>
+</div>
+
+<div class="row g-4">
+
+  <!-- Stats -->
+  <div class="col-12">
+    <div class="row g-3">
+      <div class="col-6 col-md-3">
+        <div class="card text-center py-3">
+          <div class="h4 mb-0 text-primary fw-bold">{{ stats.sent }}</div>
+          <div class="text-muted small">Sent</div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="card text-center py-3">
+          <div class="h4 mb-0 text-info fw-bold">{{ stats.open_rate|round(1) }}%</div>
+          <div class="text-muted small">Open Rate</div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="card text-center py-3">
+          <div class="h4 mb-0 text-warning fw-bold">{{ stats.click_rate|round(1) }}%</div>
+          <div class="text-muted small">Click Rate</div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="card text-center py-3">
+          <div class="h4 mb-0 text-success fw-bold">{{ stats.response_rate|round(1) }}%</div>
+          <div class="text-muted small">Response Rate</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Details -->
+  <div class="col-lg-5">
+    <div class="card">
+      <div class="card-header bg-white fw-semibold">Campaign Details</div>
+      <div class="card-body">
+        <dl class="row mb-0">
+          <dt class="col-5 text-muted small">Type</dt>
+          <dd class="col-7">
+            <span class="badge bg-light text-dark border">{{ campaign.campaign_type.value }}</span>
+          </dd>
+
+          <dt class="col-5 text-muted small">Subject</dt>
+          <dd class="col-7">{{ campaign.subject or '—' }}</dd>
+
+          <dt class="col-5 text-muted small">Target Zips</dt>
+          <dd class="col-7">{{ campaign.target_zip_codes|join(', ') or 'All' }}</dd>
+
+          <dt class="col-5 text-muted small">Target Statuses</dt>
+          <dd class="col-7">{{ campaign.target_statuses|join(', ') or 'All' }}</dd>
+
+          <dt class="col-5 text-muted small">Target Tags</dt>
+          <dd class="col-7">{{ campaign.target_tags|join(', ') or 'All' }}</dd>
+
+          <dt class="col-5 text-muted small">Created</dt>
+          <dd class="col-7 text-muted">
+            {{ campaign.created_at.strftime('%b %d, %Y') if campaign.created_at else '—' }}
+          </dd>
+
+          <dt class="col-5 text-muted small">Sent At</dt>
+          <dd class="col-7 text-muted">
+            {{ campaign.sent_at.strftime('%b %d, %Y %H:%M') if campaign.sent_at else '—' }}
+          </dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+
+  <!-- Message body -->
+  <div class="col-lg-7">
+    <div class="card">
+      <div class="card-header bg-white fw-semibold">Message Body</div>
+      <div class="card-body">
+        <pre class="mb-0" style="white-space:pre-wrap;font-family:inherit;">{{ campaign.body }}</pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- Recipients -->
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header bg-white fw-semibold">
+        Matched Recipients ({{ recipients|length }})
+        {% if campaign.status.value == 'sent' %}
+        <span class="badge bg-success ms-2">Campaign sent</span>
+        {% else %}
+        <span class="badge bg-secondary ms-2">Not yet sent</span>
+        {% endif %}
+      </div>
+      <div class="card-body p-0">
+        {% if recipients %}
+        <table class="table table-hover mb-0">
+          <thead>
+            <tr>
+              <th class="ps-3">Name</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>Zip</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for r in recipients %}
+            <tr>
+              <td class="ps-3">
+                <a href="{{ url_for('customer_detail', customer_id=r.id) }}"
+                   class="text-decoration-none fw-medium">{{ r.name }}</a>
+              </td>
+              <td>{{ r.email }}</td>
+              <td>{{ r.phone }}</td>
+              <td>{{ r.zip_code }}</td>
+              <td><span class="badge badge-status-{{ r.status.value }}">{{ r.status.value }}</span></td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        {% else %}
+        <div class="text-center text-muted py-4">
+          No customers match the targeting criteria.
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+</div>
+{% endblock %}

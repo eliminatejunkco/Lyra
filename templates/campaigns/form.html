@@ -1,0 +1,140 @@
+{% extends "base.html" %}
+{% block title %}New Campaign{% endblock %}
+
+{% block content %}
+<div class="d-flex align-items-center mb-4 gap-2">
+  <a href="{{ url_for('campaigns_list') }}" class="btn btn-sm btn-outline-secondary">
+    <i class="bi bi-arrow-left"></i>
+  </a>
+  <h1 class="h3 mb-0 fw-bold">New Campaign</h1>
+</div>
+
+<div class="row g-4">
+  <div class="col-lg-8">
+    <div class="card">
+      <div class="card-body">
+        <form method="post" action="{{ url_for('campaign_new') }}" id="campaignForm">
+
+          <!-- Template picker -->
+          <div class="mb-3">
+            <label class="form-label fw-medium">Start from a Template (optional)</label>
+            <div class="row g-2">
+              <div class="col-auto">
+                <select id="templatePicker" name="template_name" class="form-select form-select-sm">
+                  <option value="">— custom / blank —</option>
+                  {% for t in message_templates %}
+                  <option value="{{ t.name }}"
+                          data-subject="{{ t.subject }}"
+                          data-body="{{ t.body }}"
+                          data-type="{{ t.type }}">
+                    {{ t.name }} ({{ t.type }})
+                  </option>
+                  {% endfor %}
+                </select>
+              </div>
+              <div class="col-auto">
+                <button type="button" class="btn btn-sm btn-outline-secondary"
+                        onclick="applyTemplate()">Apply Template</button>
+              </div>
+            </div>
+          </div>
+
+          <hr class="my-3">
+
+          <div class="mb-3">
+            <label class="form-label fw-medium">Campaign Name <span class="text-danger">*</span></label>
+            <input type="text" name="name" class="form-control" required placeholder="e.g. Spring Cleanout 2025">
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label fw-medium">Type</label>
+            <select name="campaign_type" class="form-select">
+              {% for t in campaign_types %}
+              <option value="{{ t }}">{{ t|upper }}</option>
+              {% endfor %}
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label fw-medium">Subject <span class="text-danger">*</span></label>
+            <input type="text" name="subject" id="subjectField" class="form-control"
+                   placeholder="Email subject line (leave blank if SMS)">
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label fw-medium">Message Body <span class="text-danger">*</span></label>
+            <textarea name="body" id="bodyField" class="form-control" rows="8"
+                      placeholder="Write your message here…"></textarea>
+            <div class="form-text">You can use <code>{name}</code> as a placeholder for the recipient's name.</div>
+          </div>
+
+          <hr class="my-3">
+          <p class="text-muted small mb-2 fw-semibold">TARGETING — leave blank to send to everyone</p>
+
+          <div class="row g-3">
+            <div class="col-md-4">
+              <label class="form-label fw-medium">Zip Codes</label>
+              <input type="text" name="target_zip_codes" class="form-control form-control-sm"
+                     placeholder="12345, 12346">
+              <div class="form-text">Comma-separated</div>
+            </div>
+            <div class="col-md-4">
+              <label class="form-label fw-medium">Customer Statuses</label>
+              <input type="text" name="target_statuses" class="form-control form-control-sm"
+                     placeholder="lead, active">
+              <div class="form-text">Comma-separated</div>
+            </div>
+            <div class="col-md-4">
+              <label class="form-label fw-medium">Tags</label>
+              <input type="text" name="target_tags" class="form-control form-control-sm"
+                     placeholder="residential, repeat">
+              <div class="form-text">Comma-separated</div>
+            </div>
+          </div>
+
+          <div class="d-flex gap-2 mt-4">
+            <button type="submit" class="btn btn-primary">
+              <i class="bi bi-check-lg"></i> Create Campaign
+            </button>
+            <a href="{{ url_for('campaigns_list') }}" class="btn btn-outline-secondary">Cancel</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Template preview sidebar -->
+  <div class="col-lg-4">
+    <div class="card">
+      <div class="card-header bg-white fw-semibold">Available Templates</div>
+      <div class="list-group list-group-flush">
+        {% for t in message_templates %}
+        <div class="list-group-item px-3 py-2">
+          <div class="d-flex justify-content-between align-items-start">
+            <div>
+              <div class="fw-medium small">{{ t.name }}</div>
+              {% if t.subject %}
+              <div class="text-muted" style="font-size:.75rem;">{{ t.subject[:50] }}…</div>
+              {% endif %}
+            </div>
+            <span class="badge bg-light text-dark border">{{ t.type }}</span>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+function applyTemplate() {
+  const picker = document.getElementById('templatePicker');
+  const opt = picker.options[picker.selectedIndex];
+  if (!opt.value) return;
+  document.getElementById('subjectField').value = opt.dataset.subject || '';
+  document.getElementById('bodyField').value = opt.dataset.body || '';
+}
+</script>
+{% endblock %}

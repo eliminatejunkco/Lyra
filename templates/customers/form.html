@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+<div class="d-flex align-items-center mb-4 gap-2">
+  <a href="{{ url_for('customers_list') }}" class="btn btn-sm btn-outline-secondary">
+    <i class="bi bi-arrow-left"></i>
+  </a>
+  <h1 class="h3 mb-0 fw-bold">{{ title }}</h1>
+</div>
+
+<div class="card" style="max-width:640px;">
+  <div class="card-body">
+    <form method="post" action="{{ action_url }}">
+      <div class="row g-3">
+
+        <div class="col-md-6">
+          <label class="form-label fw-medium">Full Name <span class="text-danger">*</span></label>
+          <input type="text" name="name" class="form-control" required
+                 value="{{ customer.name if customer else '' }}">
+        </div>
+
+        <div class="col-md-6">
+          <label class="form-label fw-medium">Phone <span class="text-danger">*</span></label>
+          <input type="text" name="phone" class="form-control" required
+                 value="{{ customer.phone if customer else '' }}">
+        </div>
+
+        <div class="col-12">
+          <label class="form-label fw-medium">Email <span class="text-danger">*</span></label>
+          <input type="email" name="email" class="form-control" required
+                 value="{{ customer.email if customer else '' }}">
+        </div>
+
+        <div class="col-12">
+          <label class="form-label fw-medium">Street Address <span class="text-danger">*</span></label>
+          <input type="text" name="address" class="form-control" required
+                 value="{{ customer.address if customer else '' }}">
+        </div>
+
+        <div class="col-md-6">
+          <label class="form-label fw-medium">City <span class="text-danger">*</span></label>
+          <input type="text" name="city" class="form-control" required
+                 value="{{ customer.city if customer else '' }}">
+        </div>
+
+        <div class="col-md-6">
+          <label class="form-label fw-medium">Zip Code <span class="text-danger">*</span></label>
+          <input type="text" name="zip_code" class="form-control" required
+                 value="{{ customer.zip_code if customer else '' }}">
+        </div>
+
+        <div class="col-md-6">
+          <label class="form-label fw-medium">Status</label>
+          <select name="status" class="form-select">
+            {% for s in statuses %}
+            <option value="{{ s }}"
+              {% if customer and customer.status.value == s %}selected
+              {% elif not customer and s == 'lead' %}selected{% endif %}>
+              {{ s|capitalize }}
+            </option>
+            {% endfor %}
+          </select>
+        </div>
+
+        <div class="col-md-6">
+          <label class="form-label fw-medium">Tags</label>
+          <input type="text" name="tags" class="form-control"
+                 placeholder="comma-separated, e.g. residential, repeat"
+                 value="{{ customer.tags|join(', ') if customer else '' }}">
+        </div>
+
+        <div class="col-12">
+          <label class="form-label fw-medium">Notes</label>
+          <textarea name="notes" class="form-control" rows="3">{{ customer.notes if customer else '' }}</textarea>
+        </div>
+
+        <div class="col-12 d-flex gap-2">
+          <button type="submit" class="btn btn-primary">
+            {% if customer %}Save Changes{% else %}Add Customer{% endif %}
+          </button>
+          <a href="{{ url_for('customers_list') }}" class="btn btn-outline-secondary">Cancel</a>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}
