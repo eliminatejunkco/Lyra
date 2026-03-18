@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Lyra{% endblock %} – Eliminate Junk Co Marketing</title>
+  <link href="{{ url_for('static', filename='bootstrap.min.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='bootstrap-icons.min.css') }}" rel="stylesheet">
+  <style>
+    body { background: #f8f9fa; }
+    .sidebar {
+      min-height: 100vh;
+      background: #1a2e44;
+      color: #c9d8e8;
+      width: 230px;
+      flex-shrink: 0;
+    }
+    .sidebar .brand { color: #fff; font-size: 1.3rem; font-weight: 700; letter-spacing: .5px; }
+    .sidebar .nav-link { color: #a8bed4; border-radius: 6px; padding: .5rem 1rem; margin: 1px 0; }
+    .sidebar .nav-link:hover, .sidebar .nav-link.active { background: #243e58; color: #fff; }
+    .sidebar .nav-link i { width: 20px; }
+    .main-content { flex: 1; min-width: 0; }
+    .card { border: none; box-shadow: 0 1px 4px rgba(0,0,0,.08); }
+    .stat-card .display-6 { font-weight: 700; }
+    .badge-status-lead      { background: #6c757d; }
+    .badge-status-active    { background: #198754; }
+    .badge-status-inactive  { background: #ffc107; color: #000; }
+    .badge-status-churned   { background: #dc3545; }
+    .badge-status-draft     { background: #6c757d; }
+    .badge-status-scheduled { background: #0dcaf0; color: #000; }
+    .badge-status-sent      { background: #198754; }
+    .badge-status-cancelled { background: #dc3545; }
+    .table th { font-size: .8rem; text-transform: uppercase; letter-spacing: .5px; color: #6c757d; }
+    .flash-area { position: sticky; top: 0; z-index: 100; }
+  </style>
+</head>
+<body>
+<div class="d-flex">
+
+  <!-- Sidebar -->
+  <nav class="sidebar p-3 d-flex flex-column gap-1">
+    <a href="{{ url_for('dashboard') }}" class="brand text-decoration-none mb-3 d-block">
+      🗑️ Lyra
+    </a>
+    <a href="{{ url_for('dashboard') }}"
+       class="nav-link {% if request.endpoint == 'dashboard' %}active{% endif %}">
+      <i class="bi bi-speedometer2"></i> Dashboard
+    </a>
+    <a href="{{ url_for('customers_list') }}"
+       class="nav-link {% if 'customer' in (request.endpoint or '') %}active{% endif %}">
+      <i class="bi bi-people"></i> Customers
+    </a>
+    <a href="{{ url_for('campaigns_list') }}"
+       class="nav-link {% if 'campaign' in (request.endpoint or '') %}active{% endif %}">
+      <i class="bi bi-megaphone"></i> Campaigns
+    </a>
+    <a href="{{ url_for('tmpl_list') }}"
+       class="nav-link {% if request.endpoint == 'tmpl_list' %}active{% endif %}">
+      <i class="bi bi-file-earmark-text"></i> Templates
+    </a>
+    <a href="{{ url_for('analytics') }}"
+       class="nav-link {% if request.endpoint == 'analytics' %}active{% endif %}">
+      <i class="bi bi-bar-chart-line"></i> Analytics
+    </a>
+    <div class="mt-auto pt-3 border-top border-secondary" style="font-size:.75rem;color:#6c8199;">
+      Eliminate Junk Co
+    </div>
+  </nav>
+
+  <!-- Main -->
+  <div class="main-content p-4">
+    <!-- Flash messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <div class="flash-area mb-3">
+          {% for cat, msg in messages %}
+            <div class="alert alert-{{ cat }} alert-dismissible fade show mb-1" role="alert">
+              {{ msg }}
+              <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+
+    {% block content %}{% endblock %}
+  </div>
+</div>
+
+<script src="{{ url_for('static', filename='bootstrap.bundle.min.js') }}"></script>
+{% block scripts %}{% endblock %}
+</body>
+</html>

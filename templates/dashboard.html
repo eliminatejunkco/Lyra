@@ -1,0 +1,171 @@
+{% extends "base.html" %}
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+  <h1 class="h3 mb-0 fw-bold">Dashboard</h1>
+  <div class="d-flex gap-2">
+    <a href="{{ url_for('customer_new') }}" class="btn btn-sm btn-outline-primary">
+      <i class="bi bi-person-plus"></i> Add Customer
+    </a>
+    <a href="{{ url_for('campaign_new') }}" class="btn btn-sm btn-primary">
+      <i class="bi bi-megaphone"></i> New Campaign
+    </a>
+  </div>
+</div>
+
+<!-- Stat cards -->
+<div class="row g-3 mb-4">
+  <div class="col-6 col-md-3">
+    <div class="card stat-card text-center py-3">
+      <div class="display-6 text-primary">{{ summary.total }}</div>
+      <div class="text-muted small">Total Customers</div>
+    </div>
+  </div>
+  <div class="col-6 col-md-3">
+    <div class="card stat-card text-center py-3">
+      <div class="display-6 text-success">{{ summary.active }}</div>
+      <div class="text-muted small">Active Customers</div>
+    </div>
+  </div>
+  <div class="col-6 col-md-3">
+    <div class="card stat-card text-center py-3">
+      <div class="display-6 text-secondary">{{ summary.lead }}</div>
+      <div class="text-muted small">Leads</div>
+    </div>
+  </div>
+  <div class="col-6 col-md-3">
+    <div class="card stat-card text-center py-3">
+      <div class="display-6 text-info">{{ sent_count }}</div>
+      <div class="text-muted small">Campaigns Sent</div>
+    </div>
+  </div>
+</div>
+
+<div class="row g-4">
+  <!-- Campaign Performance -->
+  <div class="col-lg-7">
+    <div class="card">
+      <div class="card-header d-flex justify-content-between align-items-center bg-white border-bottom">
+        <span class="fw-semibold">Campaign Performance</span>
+        <a href="{{ url_for('campaigns_list') }}" class="small text-decoration-none">View all →</a>
+      </div>
+      <div class="card-body p-0">
+        {% if perf %}
+        <table class="table table-hover mb-0">
+          <thead>
+            <tr>
+              <th class="ps-3">Campaign</th>
+              <th>Sent</th>
+              <th>Open Rate</th>
+              <th>Response Rate</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for row in perf %}
+            <tr>
+              <td class="ps-3">
+                <a href="{{ url_for('campaign_detail', campaign_id=row.campaign_id) }}"
+                   class="text-decoration-none fw-medium">{{ row.campaign_name }}</a>
+              </td>
+              <td>{{ row.sent }}</td>
+              <td>
+                <div class="progress" style="height:6px;width:80px;display:inline-flex;vertical-align:middle;">
+                  <div class="progress-bar bg-info" style="width:{{ row.open_rate }}%"></div>
+                </div>
+                <span class="ms-1 small">{{ row.open_rate }}%</span>
+              </td>
+              <td>
+                <div class="progress" style="height:6px;width:80px;display:inline-flex;vertical-align:middle;">
+                  <div class="progress-bar bg-success" style="width:{{ row.response_rate }}%"></div>
+                </div>
+                <span class="ms-1 small">{{ row.response_rate }}%</span>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        {% else %}
+        <div class="text-center text-muted py-5">
+          No campaigns yet. <a href="{{ url_for('campaign_new') }}">Create one →</a>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  <!-- Top Zip Codes -->
+  <div class="col-lg-5">
+    <div class="card">
+      <div class="card-header d-flex justify-content-between align-items-center bg-white border-bottom">
+        <span class="fw-semibold">Top Service Areas</span>
+        <a href="{{ url_for('analytics') }}" class="small text-decoration-none">More →</a>
+      </div>
+      <div class="card-body">
+        {% if zips %}
+          {% set max_count = zips[0].count %}
+          {% for z in zips %}
+          <div class="mb-2">
+            <div class="d-flex justify-content-between small mb-1">
+              <span class="fw-medium">{{ z.zip_code }}</span>
+              <span class="text-muted">{{ z.count }} customer{{ 's' if z.count != 1 }}</span>
+            </div>
+            <div class="progress" style="height:8px;">
+              <div class="progress-bar bg-primary"
+                   style="width:{{ (z.count / max_count * 100)|int }}%"></div>
+            </div>
+          </div>
+          {% endfor %}
+        {% else %}
+          <div class="text-center text-muted py-4">No customer data yet.</div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  <!-- Recent Customers -->
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header d-flex justify-content-between align-items-center bg-white border-bottom">
+        <span class="fw-semibold">Recent Customers</span>
+        <a href="{{ url_for('customers_list') }}" class="small text-decoration-none">View all →</a>
+      </div>
+      <div class="card-body p-0">
+        {% if recent_customers %}
+        <table class="table table-hover mb-0">
+          <thead>
+            <tr>
+              <th class="ps-3">Name</th>
+              <th>Phone</th>
+              <th>Zip</th>
+              <th>Status</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for c in recent_customers %}
+            <tr>
+              <td class="ps-3 fw-medium">{{ c.name }}</td>
+              <td>{{ c.phone }}</td>
+              <td>{{ c.zip_code }}</td>
+              <td>
+                <span class="badge badge-status-{{ c.status.value }}">{{ c.status.value }}</span>
+              </td>
+              <td>
+                <a href="{{ url_for('customer_detail', customer_id=c.id) }}"
+                   class="btn btn-sm btn-outline-secondary py-0">View</a>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        {% else %}
+        <div class="text-center text-muted py-5">
+          No customers yet. <a href="{{ url_for('customer_new') }}">Add one →</a>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

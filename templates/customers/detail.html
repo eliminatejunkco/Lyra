@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+{% block title %}{{ customer.name }}{% endblock %}
+
+{% block content %}
+<div class="d-flex align-items-center mb-4 gap-2">
+  <a href="{{ url_for('customers_list') }}" class="btn btn-sm btn-outline-secondary">
+    <i class="bi bi-arrow-left"></i>
+  </a>
+  <h1 class="h3 mb-0 fw-bold">{{ customer.name }}</h1>
+  <span class="badge badge-status-{{ customer.status.value }} ms-1">{{ customer.status.value }}</span>
+  <div class="ms-auto d-flex gap-2">
+    <a href="{{ url_for('customer_edit', customer_id=customer.id) }}"
+       class="btn btn-sm btn-outline-primary">
+      <i class="bi bi-pencil"></i> Edit
+    </a>
+    <form method="post" action="{{ url_for('customer_record_contact', customer_id=customer.id) }}"
+          class="d-inline">
+      <button type="submit" class="btn btn-sm btn-outline-success">
+        <i class="bi bi-check2-circle"></i> Record Contact
+      </button>
+    </form>
+    <form method="post" action="{{ url_for('customer_delete', customer_id=customer.id) }}"
+          class="d-inline"
+          onsubmit="return confirm('Delete {{ customer.name }}? This cannot be undone.');">
+      <button type="submit" class="btn btn-sm btn-outline-danger">
+        <i class="bi bi-trash"></i> Delete
+      </button>
+    </form>
+  </div>
+</div>
+
+<div class="row g-4">
+  <div class="col-lg-5">
+    <div class="card">
+      <div class="card-header bg-white fw-semibold">Contact Details</div>
+      <div class="card-body">
+        <dl class="row mb-0">
+          <dt class="col-4 text-muted small">Phone</dt>
+          <dd class="col-8">{{ customer.phone }}</dd>
+
+          <dt class="col-4 text-muted small">Email</dt>
+          <dd class="col-8">
+            <a href="mailto:{{ customer.email }}" class="text-decoration-none">{{ customer.email }}</a>
+          </dd>
+
+          <dt class="col-4 text-muted small">Address</dt>
+          <dd class="col-8">{{ customer.address }}, {{ customer.city }}, {{ customer.zip_code }}</dd>
+
+          {% if customer.tags %}
+          <dt class="col-4 text-muted small">Tags</dt>
+          <dd class="col-8">
+            {% for tag in customer.tags %}
+            <span class="badge bg-light text-dark border me-1">{{ tag }}</span>
+            {% endfor %}
+          </dd>
+          {% endif %}
+
+          {% if customer.notes %}
+          <dt class="col-4 text-muted small">Notes</dt>
+          <dd class="col-8">{{ customer.notes }}</dd>
+          {% endif %}
+
+          <dt class="col-4 text-muted small">Added</dt>
+          <dd class="col-8 text-muted">
+            {{ customer.created_at.strftime('%b %d, %Y') if customer.created_at else '—' }}
+          </dd>
+
+          <dt class="col-4 text-muted small">Last Contact</dt>
+          <dd class="col-8 text-muted">
+            {{ customer.last_contacted.strftime('%b %d, %Y') if customer.last_contacted else 'Never' }}
+          </dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-7">
+    <div class="card">
+      <div class="card-header bg-white fw-semibold">Quick Actions</div>
+      <div class="card-body d-flex flex-wrap gap-2">
+        <a href="mailto:{{ customer.email }}" class="btn btn-outline-primary btn-sm">
+          <i class="bi bi-envelope"></i> Send Email
+        </a>
+        <a href="tel:{{ customer.phone }}" class="btn btn-outline-success btn-sm">
+          <i class="bi bi-telephone"></i> Call
+        </a>
+        <a href="{{ url_for('campaign_new') }}" class="btn btn-outline-secondary btn-sm">
+          <i class="bi bi-megaphone"></i> New Campaign
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

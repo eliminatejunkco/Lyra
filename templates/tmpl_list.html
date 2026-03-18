@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block title %}Message Templates{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+  <h1 class="h3 mb-0 fw-bold">Message Templates</h1>
+  <a href="{{ url_for('campaign_new') }}" class="btn btn-primary btn-sm">
+    <i class="bi bi-megaphone"></i> Use in Campaign
+  </a>
+</div>
+
+<!-- Filter tabs -->
+<ul class="nav nav-pills mb-3">
+  <li class="nav-item">
+    <a class="nav-link {% if not type_filter %}active{% endif %}"
+       href="{{ url_for('tmpl_list') }}">All</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link {% if type_filter == 'email' %}active{% endif %}"
+       href="{{ url_for('tmpl_list', type='email') }}">Email</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link {% if type_filter == 'sms' %}active{% endif %}"
+       href="{{ url_for('tmpl_list', type='sms') }}">SMS</a>
+  </li>
+</ul>
+
+<div class="row g-4">
+  {% for t in templates %}
+  <div class="col-md-6">
+    <div class="card h-100">
+      <div class="card-header bg-white d-flex justify-content-between align-items-center">
+        <span class="fw-semibold">{{ t.name }}</span>
+        <span class="badge {% if t.type == 'email' %}bg-primary{% else %}bg-success{% endif %}">
+          {{ t.type|upper }}
+        </span>
+      </div>
+      <div class="card-body">
+        {% if t.subject %}
+        <p class="small text-muted mb-1"><strong>Subject:</strong> {{ t.subject }}</p>
+        {% endif %}
+        <pre class="bg-light rounded p-2 small mb-2" style="white-space:pre-wrap;font-size:.8rem;max-height:160px;overflow-y:auto;">{{ t.body }}</pre>
+      </div>
+      <div class="card-footer bg-white border-top-0">
+        <a href="{{ url_for('campaign_new') }}?template={{ t.name }}"
+           class="btn btn-sm btn-outline-primary">
+          <i class="bi bi-megaphone"></i> Create Campaign with This Template
+        </a>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}
