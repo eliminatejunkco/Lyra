@@ -105,7 +105,7 @@ function bindInput() {
 
 function showWelcome() {
   const html = `
-    <p>Hello! I'm <strong>Lyra</strong>, your AI prompt optimizer. I turn rough ideas into powerful prompts.</p>
+    <p>Hello, Sir Diego! I'm <strong>Lyra</strong>, your AI prompt optimizer. I turn rough ideas into powerful prompts.</p>
     <p style="margin-top:8px">Tell me your:</p>
     <ul style="margin:8px 0 0 18px; line-height:2">
       <li><strong>Target AI</strong> (e.g. ChatGPT, Claude, Gemini)</li>
@@ -131,12 +131,12 @@ function handleModeSelect(mode) {
 
   if (mode === "DETAIL") {
     appendLyraMessage(
-      "Great — <strong>DETAIL mode</strong> activated. I'll ask a few targeted questions before delivering a fully optimized prompt.<br><br>" +
+      "Great, Sir Diego — <strong>DETAIL mode</strong> activated. I'll ask a few targeted questions before delivering a fully optimized prompt.<br><br>" +
       "First, which AI platform will you use? (ChatGPT, Claude, Gemini, or other)"
     );
   } else {
     appendLyraMessage(
-      "<strong>BASIC mode</strong> activated — I'll deliver an optimized prompt right away.<br><br>" +
+      "Sir Diego, <strong>BASIC mode</strong> activated — I'll deliver an optimized prompt right away.<br><br>" +
       "Which AI platform will you use? (ChatGPT, Claude, Gemini, or other)"
     );
   }
