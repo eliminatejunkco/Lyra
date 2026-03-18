@@ -1,0 +1,5 @@
+Metadata-Version: 2.1
+Name: lyra-marketing
+Version: 0.1.0
+Summary: Marketing system for junk removal businesses
+Requires-Python: >=3.10
