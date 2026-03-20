@@ -219,6 +219,236 @@
     }
     .confirm-box p { margin-bottom: 20px; color: var(--gray-700); }
     .confirm-box .actions { display: flex; gap: 10px; justify-content: center; }
+
+    /* ── Instagram Post Modal ───────────────────────────────── */
+    .post-overlay {
+      display: none;
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,.6);
+      z-index: 400;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+    .post-overlay.open { display: flex; }
+    .post-modal {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.3);
+      width: 100%;
+      max-width: 860px;
+      max-height: 95vh;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+    }
+    .post-modal-header {
+      padding: 18px 24px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--gray-100);
+      padding-bottom: 14px;
+    }
+    .post-modal-header h2 { font-size: 1.1rem; display: flex; align-items: center; gap: 8px; }
+    .post-modal-body {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+    @media (max-width: 680px) {
+      .post-modal-body { grid-template-columns: 1fr; }
+    }
+
+    /* Left panel – controls */
+    .post-controls {
+      padding: 20px 24px;
+      border-right: 1px solid var(--gray-100);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .photo-pair {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    .photo-slot {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .photo-slot label { font-size: .8rem; font-weight: 600; color: var(--gray-700); }
+    .photo-drop {
+      aspect-ratio: 1;
+      border: 2px dashed var(--gray-200);
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      background: var(--gray-50);
+      transition: border-color .15s;
+    }
+    .photo-drop:hover { border-color: var(--green); }
+    .photo-drop .drop-hint { font-size: .7rem; color: var(--gray-400); text-align: center; padding: 8px; pointer-events: none; }
+    .photo-drop img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+    }
+    .photo-drop input[type=file] {
+      position: absolute; inset: 0;
+      opacity: 0; cursor: pointer; width: 100%; height: 100%;
+      padding: 0; border: none;
+    }
+    .photo-drop .remove-photo {
+      position: absolute; top: 4px; right: 4px;
+      background: rgba(0,0,0,.55); color: #fff;
+      border: none; border-radius: 999px;
+      width: 22px; height: 22px;
+      font-size: .75rem; cursor: pointer;
+      display: none; align-items: center; justify-content: center;
+      line-height: 1;
+    }
+    .photo-drop:has(img) .remove-photo { display: flex; }
+
+    .caption-wrap { display: flex; flex-direction: column; gap: 6px; }
+    .caption-wrap label { font-size: .8rem; font-weight: 600; color: var(--gray-700); }
+    .caption-wrap textarea {
+      min-height: 110px;
+      font-size: .82rem;
+      line-height: 1.5;
+      resize: vertical;
+    }
+    .post-controls-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+
+    /* Right panel – preview */
+    .post-preview-panel {
+      padding: 20px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      background: #fafafa;
+    }
+    .post-preview-panel > .panel-title {
+      font-size: .78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      color: var(--gray-400);
+    }
+    /* Instagram card */
+    .ig-card {
+      background: #fff;
+      border: 1px solid #dbdbdb;
+      border-radius: 8px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      max-width: 340px;
+      width: 100%;
+      margin: 0 auto;
+      font-size: 13px;
+      color: #262626;
+    }
+    .ig-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 12px;
+    }
+    .ig-avatar {
+      width: 34px; height: 34px;
+      border-radius: 999px;
+      background: linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-weight: 700; font-size: .85rem; flex-shrink: 0;
+    }
+    .ig-username { font-weight: 600; font-size: .82rem; }
+    .ig-location { font-size: .72rem; color: #737373; }
+    .ig-more { margin-left: auto; color: #262626; font-size: 1.1rem; letter-spacing: .05em; }
+    /* Before/after image area */
+    .ig-image-area {
+      aspect-ratio: 1;
+      background: #e0e0e0;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+    }
+    .ig-image-area .ig-before,
+    .ig-image-area .ig-after {
+      flex: 1;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+    }
+    .ig-image-area img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+    }
+    .ig-label {
+      position: absolute;
+      bottom: 8px; left: 8px;
+      background: rgba(0,0,0,.55);
+      color: #fff;
+      font-size: .65rem;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 999px;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+    .ig-divider {
+      position: absolute; top: 0; bottom: 0;
+      left: 50%; width: 2px;
+      background: #fff;
+      transform: translateX(-50%);
+    }
+    .ig-placeholder {
+      flex: 1;
+      display: flex; align-items: center; justify-content: center;
+      background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+      color: #388e3c;
+      font-size: .72rem;
+      font-weight: 700;
+      text-align: center;
+      padding: 8px;
+    }
+    .ig-placeholder.after-ph {
+      background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+      color: #1565c0;
+    }
+    .ig-actions {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 10px 12px 6px;
+    }
+    .ig-icon { font-size: 1.3rem; cursor: pointer; }
+    .ig-bookmark { margin-left: auto; }
+    .ig-likes { padding: 0 12px 6px; font-size: .82rem; font-weight: 700; }
+    .ig-caption-preview {
+      padding: 0 12px 8px;
+      font-size: .8rem;
+      line-height: 1.5;
+      white-space: pre-line;
+      word-break: break-word;
+    }
+    .ig-caption-preview strong { font-weight: 700; }
+    .ig-caption-preview .ig-hashtags { color: #00376b; }
+    .ig-time { padding: 0 12px 12px; font-size: .68rem; color: #8e8e8e; }
+    .post-modal-footer {
+      padding: 14px 24px 18px;
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      border-top: 1px solid var(--gray-100);
+    }
+    .btn-instagram {
+      background: linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);
+      color: #fff;
+    }
   </style>
 </head>
 <body>
@@ -358,6 +588,103 @@
   </div>
 </div>
 
+<!-- Instagram Post Modal -->
+<div class="post-overlay" id="postOverlay">
+  <div class="post-modal" role="dialog" aria-modal="true" aria-labelledby="postModalTitle">
+    <div class="post-modal-header">
+      <h2 id="postModalTitle">
+        <span style="background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-size:1.3rem">📸</span>
+        Instagram Before &amp; After Post
+      </h2>
+      <button class="modal-close" onclick="closePostModal()" aria-label="Close">&times;</button>
+    </div>
+
+    <div class="post-modal-body">
+      <!-- Left: controls -->
+      <div class="post-controls">
+        <div>
+          <div style="font-size:.8rem;font-weight:700;color:var(--gray-700);margin-bottom:8px;">Photos</div>
+          <div class="photo-pair">
+            <div class="photo-slot">
+              <label>Before</label>
+              <div class="photo-drop" id="beforeDrop">
+                <div class="drop-hint">📷<br>Tap to add<br>BEFORE photo</div>
+                <input type="file" id="beforeInput" accept="image/*" onchange="handlePhoto('before',this)" />
+                <button class="remove-photo" onclick="removePhoto('before',event)" aria-label="Remove before photo">&times;</button>
+              </div>
+            </div>
+            <div class="photo-slot">
+              <label>After</label>
+              <div class="photo-drop" id="afterDrop">
+                <div class="drop-hint">📷<br>Tap to add<br>AFTER photo</div>
+                <input type="file" id="afterInput" accept="image/*" onchange="handlePhoto('after',this)" />
+                <button class="remove-photo" onclick="removePhoto('after',event)" aria-label="Remove after photo">&times;</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="caption-wrap">
+          <label for="postCaption">Caption</label>
+          <textarea id="postCaption" placeholder="Caption will be auto-generated from job details…"></textarea>
+        </div>
+
+        <div class="post-controls-actions">
+          <button class="btn btn-ghost btn-sm" onclick="regenerateCaption()">🔄 Regenerate Caption</button>
+          <button class="btn btn-ghost btn-sm" onclick="copyCaption()">📋 Copy Caption</button>
+          <button class="btn btn-primary btn-sm" onclick="savePhotos()">💾 Save Photos</button>
+        </div>
+        <div id="postFeedback" style="font-size:.78rem;color:var(--green);min-height:1.2em;"></div>
+      </div>
+
+      <!-- Right: preview -->
+      <div class="post-preview-panel">
+        <div class="panel-title">Preview</div>
+        <div class="ig-card" id="igCard">
+          <div class="ig-header">
+            <div class="ig-avatar">EJ</div>
+            <div>
+              <div class="ig-username">eliminatejunkco</div>
+              <div class="ig-location" id="igLocation">—</div>
+            </div>
+            <div class="ig-more">···</div>
+          </div>
+
+          <div class="ig-image-area" id="igImageArea">
+            <div class="ig-before" id="igBefore">
+              <div class="ig-placeholder">📦 BEFORE</div>
+            </div>
+            <div class="ig-divider"></div>
+            <div class="ig-after" id="igAfter">
+              <div class="ig-placeholder after-ph">✨ AFTER</div>
+            </div>
+          </div>
+
+          <div class="ig-actions">
+            <span class="ig-icon">🤍</span>
+            <span class="ig-icon">💬</span>
+            <span class="ig-icon">➤</span>
+            <span class="ig-icon ig-bookmark">🔖</span>
+          </div>
+          <div class="ig-likes">247 likes</div>
+          <div class="ig-caption-preview" id="igCaptionPreview"></div>
+          <div class="ig-time">Just now</div>
+        </div>
+
+        <div style="font-size:.72rem;color:var(--gray-400);text-align:center;line-height:1.4">
+          Save the photos to keep them with the job.<br>
+          Screenshot this preview to share on Instagram.
+        </div>
+      </div>
+    </div>
+
+    <div class="post-modal-footer">
+      <button class="btn btn-ghost" onclick="closePostModal()">Close</button>
+      <button class="btn btn-instagram" onclick="savePhotos()">💾 Save &amp; Keep Photos</button>
+    </div>
+  </div>
+</div>
+
 <script>
   // ── State ────────────────────────────────────────────────
   let editingId = null;
@@ -430,6 +757,7 @@
             <div class="td-actions">
               <button class="btn btn-ghost btn-sm" onclick="openModal(${j.id})">Edit</button>
               <button class="btn btn-danger btn-sm" onclick="confirmDelete(${j.id})">Delete</button>
+              <button class="btn btn-sm" style="background:#e1306c;color:#fff" onclick="openPostModal(${j.id})" title="Create Instagram Before/After Post">📸 Post</button>
             </div>
           </td>
         </tr>`;
@@ -525,11 +853,228 @@
   document.getElementById('confirmOverlay').addEventListener('click', e => {
     if (e.target === document.getElementById('confirmOverlay')) closeConfirm();
   });
+  document.getElementById('postOverlay').addEventListener('click', e => {
+    if (e.target === document.getElementById('postOverlay')) closePostModal();
+  });
 
   // ── Keyboard: Escape closes modals ────────────────────────
   document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') { closeModal(); closeConfirm(); }
+    if (e.key === 'Escape') { closeModal(); closeConfirm(); closePostModal(); }
   });
+
+  // ── Instagram Post ────────────────────────────────────────
+  let postJobId = null;
+  let postJob   = null;
+  // undefined = not changed, null = explicitly cleared, string = new data URL
+  let beforeDataUrl = undefined;
+  let afterDataUrl  = undefined;
+
+  const IG_HASHTAGS = '#JunkRemoval #BeforeAndAfter #CleanUp #Declutter #HouseCleanout #GarageCleanout #JunkHauling #EliminateJunkCo #TrashRemoval #FreshStart';
+
+  async function openPostModal(id) {
+    postJobId     = id;
+    beforeDataUrl = undefined;
+    afterDataUrl  = undefined;
+
+    // Reset photo slots
+    resetSlot('before');
+    resetSlot('after');
+    document.getElementById('postFeedback').textContent = '';
+
+    const job = await fetch('/api/jobs/' + id).then(r => r.json());
+    postJob = job;
+
+    // Restore saved photos if they exist
+    if (job.before_photo) loadSlot('before', job.before_photo);
+    if (job.after_photo)  loadSlot('after',  job.after_photo);
+
+    // Location preview
+    document.getElementById('igLocation').textContent = job.address || 'Los Angeles, CA';
+
+    regenerateCaption();
+    document.getElementById('postOverlay').classList.add('open');
+  }
+
+  function closePostModal() {
+    document.getElementById('postOverlay').classList.remove('open');
+    postJobId = null;
+    postJob   = null;
+  }
+
+  function generateCaption(job) {
+    const desc    = job.description ? job.description.trim() : 'full junk removal';
+    const address = job.address     ? job.address.split(',')[0].trim() : 'Los Angeles';
+    const date    = job.job_date    ? (() => {
+      const [y,m,d] = job.job_date.split('-').map(Number);
+      return new Date(y, m-1, d).toLocaleDateString('en-US', {month:'long', day:'numeric', year:'numeric'});
+    })() : 'recently';
+    const price   = job.actual != null ? `$${Number(job.actual).toLocaleString('en-US')}` : null;
+
+    let lines = [];
+    lines.push(`✅ BEFORE → AFTER ✨`);
+    lines.push('');
+    lines.push(`We tackled a ${desc} at ${address} on ${date} and the results speak for themselves!`);
+    lines.push('');
+    lines.push(`🚛 No job is too big or too small for the Eliminate Junk Co crew.`);
+    if (price) lines.push(`💰 Job completed for ${price}.`);
+    lines.push('');
+    lines.push(`Ready to clear YOUR space? Give us a call for a FREE estimate!`);
+    lines.push(`📞 (626) 555-0199`);
+    lines.push(`🌐 EliminateJunkCo.com`);
+    lines.push('');
+    lines.push(IG_HASHTAGS);
+
+    return lines.join('\n');
+  }
+
+  function regenerateCaption() {
+    if (!postJob) return;
+    const caption = generateCaption(postJob);
+    document.getElementById('postCaption').value = caption;
+    updateIgPreview(caption);
+  }
+
+  document.getElementById('postCaption').addEventListener('input', function() {
+    updateIgPreview(this.value);
+  });
+
+  function updateIgPreview(caption) {
+    const preview = document.getElementById('igCaptionPreview');
+    // Split caption into main text and hashtags
+    const lines     = caption.split('\n');
+    const hashStart = lines.findIndex(l => l.trim().startsWith('#'));
+    const mainLines = hashStart >= 0 ? lines.slice(0, hashStart) : lines;
+    const hashLines = hashStart >= 0 ? lines.slice(hashStart)    : [];
+
+    const mainText = esc(mainLines.join('\n').trim());
+    const hashText = esc(hashLines.join(' ').trim());
+
+    preview.innerHTML =
+      '<strong>eliminatejunkco</strong> ' +
+      mainText.replace(/\n/g, '<br>') +
+      (hashText ? ' <span class="ig-hashtags">' + hashText + '</span>' : '');
+  }
+
+  async function copyCaption() {
+    const text = document.getElementById('postCaption').value;
+    try {
+      await navigator.clipboard.writeText(text);
+      showFeedback('✅ Caption copied to clipboard!');
+    } catch {
+      showFeedback('⚠️ Select and copy the caption manually.');
+    }
+  }
+
+  async function savePhotos() {
+    if (!postJobId) return;
+    const payload = {};
+    if (beforeDataUrl !== undefined) payload.before_photo = beforeDataUrl;
+    if (afterDataUrl  !== undefined) payload.after_photo  = afterDataUrl;
+
+    // Always include required fields so server validation passes
+    if (postJob) {
+      Object.assign(payload, {
+        customer:    postJob.customer,
+        phone:       postJob.phone,
+        email:       postJob.email,
+        address:     postJob.address,
+        description: postJob.description,
+        status:      postJob.status,
+        estimate:    postJob.estimate,
+        actual:      postJob.actual,
+        job_date:    postJob.job_date,
+        notes:       postJob.notes,
+      });
+    }
+
+    const res = await fetch('/api/jobs/' + postJobId, {
+      method: 'PUT',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(payload)
+    });
+
+    if (res.ok) {
+      showFeedback('✅ Photos saved to job!');
+    } else {
+      showFeedback('❌ Could not save photos. Please try again.');
+    }
+  }
+
+  function showFeedback(msg) {
+    const el = document.getElementById('postFeedback');
+    el.textContent = msg;
+    setTimeout(() => { el.textContent = ''; }, 3500);
+  }
+
+  function handlePhoto(slot, input) {
+    const file = input.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = e => {
+      const dataUrl = e.target.result;
+      loadSlot(slot, dataUrl);
+      if (slot === 'before') beforeDataUrl = dataUrl;
+      else                   afterDataUrl  = dataUrl;
+    };
+    reader.readAsDataURL(file);
+  }
+
+  function loadSlot(slot, dataUrl) {
+    const drop = document.getElementById(slot + 'Drop');
+    // Remove existing preview img
+    const prev = drop.querySelector('img');
+    if (prev) prev.remove();
+
+    const img = document.createElement('img');
+    img.src = dataUrl;
+    img.alt = slot === 'before' ? 'Before photo' : 'After photo';
+    drop.insertBefore(img, drop.querySelector('.remove-photo'));
+
+    // Update IG preview
+    updateIgPhoto(slot, dataUrl);
+  }
+
+  function removePhoto(slot, e) {
+    e.stopPropagation();
+    e.preventDefault();
+    resetSlot(slot);
+    if (slot === 'before') {
+      beforeDataUrl = null;
+      updateIgPhoto('before', null);
+    } else {
+      afterDataUrl = null;
+      updateIgPhoto('after', null);
+    }
+  }
+
+  function resetSlot(slot) {
+    const drop  = document.getElementById(slot + 'Drop');
+    const prev  = drop.querySelector('img');
+    if (prev) prev.remove();
+    const inp   = document.getElementById(slot + 'Input');
+    inp.value   = '';
+  }
+
+  function updateIgPhoto(slot, dataUrl) {
+    const container = document.getElementById(slot === 'before' ? 'igBefore' : 'igAfter');
+    container.innerHTML = '';
+
+    if (dataUrl) {
+      const img = document.createElement('img');
+      img.src = dataUrl;
+      img.alt = slot === 'before' ? 'Before' : 'After';
+      container.appendChild(img);
+      const lbl = document.createElement('div');
+      lbl.className = 'ig-label';
+      lbl.textContent = slot === 'before' ? 'BEFORE' : 'AFTER';
+      container.appendChild(lbl);
+    } else {
+      const ph = document.createElement('div');
+      ph.className = 'ig-placeholder' + (slot === 'after' ? ' after-ph' : '');
+      ph.textContent = slot === 'before' ? '📦 BEFORE' : '✨ AFTER';
+      container.appendChild(ph);
+    }
+  }
 </script>
 </body>
 </html>

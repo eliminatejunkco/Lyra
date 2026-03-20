@@ -180,3 +180,46 @@ describe('GET /api/stats (after inserts)', () => {
     assert.ok(body.Completed >= 1);
   });
 });
+
+describe('Before/After photo fields', () => {
+  test('job is created with null photo fields by default', async () => {
+    const { status, body } = await request('POST', '/api/jobs', { customer: 'PhotoTest' });
+    assert.equal(status, 201);
+    assert.equal(body.before_photo, null);
+    assert.equal(body.after_photo, null);
+  });
+
+  test('before_photo and after_photo can be stored on create', async () => {
+    const { status, body } = await request('POST', '/api/jobs', {
+      customer: 'Iris',
+      before_photo: 'data:image/png;base64,AAAA',
+      after_photo:  'data:image/png;base64,BBBB'
+    });
+    assert.equal(status, 201);
+    assert.equal(body.before_photo, 'data:image/png;base64,AAAA');
+    assert.equal(body.after_photo,  'data:image/png;base64,BBBB');
+  });
+
+  test('before_photo and after_photo can be updated via PUT', async () => {
+    const { body: created } = await request('POST', '/api/jobs', { customer: 'Jack' });
+    const { status, body } = await request('PUT', '/api/jobs/' + created.id, {
+      customer:     'Jack',
+      before_photo: 'data:image/jpeg;base64,CCCC',
+      after_photo:  'data:image/jpeg;base64,DDDD'
+    });
+    assert.equal(status, 200);
+    assert.equal(body.before_photo, 'data:image/jpeg;base64,CCCC');
+    assert.equal(body.after_photo,  'data:image/jpeg;base64,DDDD');
+  });
+
+  test('GET /api/jobs/:id returns photo fields', async () => {
+    const { body: created } = await request('POST', '/api/jobs', {
+      customer: 'Karen',
+      before_photo: 'data:image/png;base64,EEEE'
+    });
+    const { status, body } = await request('GET', '/api/jobs/' + created.id);
+    assert.equal(status, 200);
+    assert.equal(body.before_photo, 'data:image/png;base64,EEEE');
+    assert.equal(body.after_photo, null);
+  });
+});
