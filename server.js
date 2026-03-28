@@ -14,21 +14,28 @@ const db = new Database(process.env.DB_PATH || 'lyra.db');
 
 db.exec(`
   CREATE TABLE IF NOT EXISTS jobs (
-    id          INTEGER PRIMARY KEY AUTOINCREMENT,
-    customer    TEXT    NOT NULL,
-    phone       TEXT,
-    email       TEXT,
-    address     TEXT,
-    description TEXT,
-    status      TEXT    NOT NULL DEFAULT 'Lead',
-    estimate    REAL,
-    actual      REAL,
-    job_date    TEXT,
-    created_at  TEXT    NOT NULL DEFAULT (datetime('now')),
-    updated_at  TEXT    NOT NULL DEFAULT (datetime('now')),
-    notes       TEXT
+    id           INTEGER PRIMARY KEY AUTOINCREMENT,
+    customer     TEXT    NOT NULL,
+    phone        TEXT,
+    email        TEXT,
+    address      TEXT,
+    description  TEXT,
+    status       TEXT    NOT NULL DEFAULT 'Lead',
+    estimate     REAL,
+    actual       REAL,
+    job_date     TEXT,
+    created_at   TEXT    NOT NULL DEFAULT (datetime('now')),
+    updated_at   TEXT    NOT NULL DEFAULT (datetime('now')),
+    notes        TEXT,
+    before_photo TEXT,
+    after_photo  TEXT
   );
 `);
+
+// Migrate: add photo columns to existing databases
+const existingCols = db.prepare('PRAGMA table_info(jobs)').all().map(c => c.name);
+if (!existingCols.includes('before_photo')) db.exec('ALTER TABLE jobs ADD COLUMN before_photo TEXT');
+if (!existingCols.includes('after_photo'))  db.exec('ALTER TABLE jobs ADD COLUMN after_photo TEXT');
 
 // ── Middleware ────────────────────────────────────────────────────────────────
 
@@ -111,10 +118,10 @@ app.post('/api/jobs', (req, res) => {
   const errors = validateJob(req.body);
   if (errors.length) return res.status(400).json({ errors });
 
-  const { customer, phone, email, address, description, status, estimate, actual, job_date, notes } = req.body;
+  const { customer, phone, email, address, description, status, estimate, actual, job_date, notes, before_photo, after_photo } = req.body;
   const result = db.prepare(`
-    INSERT INTO jobs (customer, phone, email, address, description, status, estimate, actual, job_date, notes)
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    INSERT INTO jobs (customer, phone, email, address, description, status, estimate, actual, job_date, notes, before_photo, after_photo)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
   `).run(
     customer.trim(),
     phone || null,
@@ -125,7 +132,9 @@ app.post('/api/jobs', (req, res) => {
     estimate !== '' && estimate != null ? Number(estimate) : null,
     actual !== '' && actual != null ? Number(actual) : null,
     job_date || null,
-    notes || null
+    notes || null,
+    before_photo || null,
+    after_photo || null
   );
 
   res.status(201).json(db.prepare('SELECT * FROM jobs WHERE id = ?').get(result.lastInsertRowid));
@@ -147,11 +156,12 @@ app.put('/api/jobs/:id', (req, res) => {
   const errors = validateJob(merged);
   if (errors.length) return res.status(400).json({ errors });
 
-  const { customer, phone, email, address, description, status, estimate, actual, job_date, notes } = merged;
+  const { customer, phone, email, address, description, status, estimate, actual, job_date, notes, before_photo, after_photo } = merged;
   db.prepare(`
     UPDATE jobs SET
       customer = ?, phone = ?, email = ?, address = ?, description = ?,
       status = ?, estimate = ?, actual = ?, job_date = ?, notes = ?,
+      before_photo = ?, after_photo = ?,
       updated_at = datetime('now')
     WHERE id = ?
   `).run(
@@ -165,6 +175,8 @@ app.put('/api/jobs/:id', (req, res) => {
     actual !== '' && actual != null ? Number(actual) : null,
     job_date || null,
     notes || null,
+    before_photo || null,
+    after_photo || null,
     req.params.id
   );
 
