@@ -303,6 +303,7 @@
       min-height: 110px;
       cursor: text;
     }
+    .script-card textarea.tall { min-height: 220px; }
     .script-card textarea:focus { outline: none; border-color: var(--gray-200); }
     .btn-copy {
       background: var(--green-l);
@@ -548,9 +549,11 @@
   <!-- ── Scripts view ──────────────────────────────── -->
   <div id="view-scripts" class="section hidden" role="tabpanel" aria-labelledby="tab-scripts">
     <p style="font-size:.85rem;color:var(--gray-600);margin-bottom:20px;">
-      Ready-to-send messages for common lead sources. Click <strong>Copy</strong> and paste directly into Facebook Messenger, text, or email.
+      Ready-to-send messages and social media captions. Click <strong>Copy</strong> and paste directly into Facebook, Messenger, text, or email.
     </p>
-    <div class="scripts-grid">
+
+    <h2 style="font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--gray-600);margin-bottom:12px;">💬 Direct Message Scripts</h2>
+    <div class="scripts-grid" style="margin-bottom:32px;">
 
       <div class="script-card">
         <h3>🆓 Free Item Listing</h3>
@@ -571,6 +574,53 @@
         <span class="script-when">Use when: someone posts about spring cleaning or has leftover items after an estate or garage sale</span>
         <textarea id="script-cleanout" readonly>Hi! Looks like you've got some great stuff available. If anything's still left over at the end and you just want it gone, I run a junk removal service and can come haul away whatever didn't sell — same day if needed. Makes cleanup a breeze! Feel free to reach out. 👍</textarea>
         <button class="btn btn-copy btn-sm" onclick="copyScript('script-cleanout', this)">📋 Copy</button>
+      </div>
+
+    </div>
+
+    <h2 style="font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--gray-600);margin-bottom:12px;">📸 Social Media Post Captions</h2>
+    <div class="scripts-grid">
+
+      <div class="script-card">
+        <h3>🪵 Before &amp; After – Yard Debris / Construction Cleanout</h3>
+        <span class="script-when">Use when: posting a before &amp; after photo of a yard debris or construction waste job</span>
+        <textarea id="script-fb-yard" class="tall" readonly>Before & After ✅
+
+This pile of scrap wood, trim pieces, and construction debris had been sitting on the grass — we cleared it all out in one trip and left the yard looking clean. 🌿
+
+One call, one truck, done.
+
+Got a pile like this taking up space? Send us a message or give us a call for a fast, free quote. 👇
+
+📞 909-373-5516
+📍 Inland Empire & surrounding areas
+
+– Diego
+Eliminate Junk Removal
+
+#JunkRemoval #YardCleanup #DebrisRemoval #ConstructionCleanup #InlandEmpire #BeforeAndAfter #EliminateJunk</textarea>
+        <button class="btn btn-copy btn-sm" onclick="copyScript('script-fb-yard', this)">📋 Copy</button>
+      </div>
+
+      <div class="script-card">
+        <h3>🛋️ Before &amp; After – Furniture / Interior Haul-Out</h3>
+        <span class="script-when">Use when: posting a before &amp; after photo of a furniture removal or interior cleanout job</span>
+        <textarea id="script-fb-furniture" class="tall" readonly>Before & After ✅
+
+Customer needed a full room cleared out — old furniture, boxes, and miscellaneous junk that had been piling up. We loaded it all and hauled it away same day. 🚛
+
+No lifting on your end. We do all the heavy work.
+
+Ready to reclaim your space? Message us or call for a free quote. 👇
+
+📞 909-373-5516
+📍 Inland Empire & surrounding areas
+
+– Diego
+Eliminate Junk Removal
+
+#JunkRemoval #FurnitureRemoval #HouseCleanout #InlandEmpire #BeforeAndAfter #EliminateJunk</textarea>
+        <button class="btn btn-copy btn-sm" onclick="copyScript('script-fb-furniture', this)">📋 Copy</button>
       </div>
 
     </div>
@@ -844,6 +894,14 @@
   // ── Copy script to clipboard ──────────────────────────────
   function copyScript(textareaId, btn) {
     const text = document.getElementById(textareaId).value;
+    if (!navigator.clipboard) {
+      // Clipboard API unavailable — select the text so user can copy manually
+      const ta = document.getElementById(textareaId);
+      ta.select();
+      btn.textContent = '👆 Select all & copy';
+      setTimeout(() => { btn.textContent = '📋 Copy'; }, 3000);
+      return;
+    }
     navigator.clipboard.writeText(text).then(() => {
       btn.textContent = '✅ Copied!';
       btn.classList.add('copied');
@@ -852,16 +910,11 @@
         btn.classList.remove('copied');
       }, 2000);
     }).catch(() => {
-      // Fallback for browsers that deny clipboard permission
+      // Permission denied — select the text so the user can copy it manually
       const ta = document.getElementById(textareaId);
       ta.select();
-      document.execCommand('copy');
-      btn.textContent = '✅ Copied!';
-      btn.classList.add('copied');
-      setTimeout(() => {
-        btn.textContent = '📋 Copy';
-        btn.classList.remove('copied');
-      }, 2000);
+      btn.textContent = '👆 Select all & copy';
+      setTimeout(() => { btn.textContent = '📋 Copy'; }, 3000);
     });
   }
 </script>
