@@ -261,6 +261,58 @@
     .section { display: block; }
     .section.hidden { display: none; }
 
+    /* ── Scripts tab ────────────────────────────────────── */
+    .scripts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 20px;
+    }
+    .script-card {
+      background: #fff;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 20px 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .script-card h3 {
+      font-size: .95rem;
+      font-weight: 700;
+      color: var(--gray-800);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .script-card .script-when {
+      font-size: .78rem;
+      color: var(--gray-600);
+      background: var(--gray-100);
+      border-radius: 4px;
+      padding: 4px 8px;
+    }
+    .script-card textarea {
+      resize: none;
+      font-size: .88rem;
+      line-height: 1.55;
+      color: var(--gray-700);
+      background: var(--gray-50);
+      border: 1px solid var(--gray-200);
+      border-radius: 6px;
+      padding: 10px 12px;
+      min-height: 110px;
+      cursor: text;
+    }
+    .script-card textarea:focus { outline: none; border-color: var(--gray-200); }
+    .btn-copy {
+      background: var(--green-l);
+      color: var(--green-d);
+      border: 1px solid #bbf7d0;
+      align-self: flex-end;
+    }
+    .btn-copy:hover { background: #bbf7d0; }
+    .btn-copy.copied { background: var(--green); color: #fff; border-color: var(--green); }
+
     /* ── Confirm dialog ─────────────────────────────────── */
     .confirm-overlay {
       display: none;
@@ -298,6 +350,7 @@
   <nav class="tab-nav" role="tablist" aria-label="Main navigation">
     <button class="tab-btn active" id="tab-jobs"      role="tab" aria-selected="true"  aria-controls="view-jobs"       onclick="showTab('jobs')">📋 Jobs</button>
     <button class="tab-btn"        id="tab-flowchart" role="tab" aria-selected="false" aria-controls="view-flowchart"  onclick="showTab('flowchart')">📊 Process Flowchart</button>
+    <button class="tab-btn"        id="tab-scripts"   role="tab" aria-selected="false" aria-controls="view-scripts"    onclick="showTab('scripts')">💬 Outreach Scripts</button>
   </nav>
 
   <!-- ── Jobs view ──────────────────────────────────── -->
@@ -491,6 +544,37 @@
       </div>
     </div>
   </div><!-- /view-flowchart -->
+
+  <!-- ── Scripts view ──────────────────────────────── -->
+  <div id="view-scripts" class="section hidden" role="tabpanel" aria-labelledby="tab-scripts">
+    <p style="font-size:.85rem;color:var(--gray-600);margin-bottom:20px;">
+      Ready-to-send messages for common lead sources. Click <strong>Copy</strong> and paste directly into Facebook Messenger, text, or email.
+    </p>
+    <div class="scripts-grid">
+
+      <div class="script-card">
+        <h3>🆓 Free Item Listing</h3>
+        <span class="script-when">Use when: someone is giving an item away on Facebook Marketplace, Craigslist, or Nextdoor</span>
+        <textarea id="script-free-item" readonly>Hi! I noticed you're giving this away for free — I hope someone grabs it quickly! If it ends up going unclaimed, I run a local junk removal service and would be happy to come take it off your hands along with anything else you're looking to get rid of. One trip, fair price, and I'll haul it all away. No pressure at all — just wanted to put it out there. Have a great day! 😊</textarea>
+        <button class="btn btn-copy btn-sm" onclick="copyScript('script-free-item', this)">📋 Copy</button>
+      </div>
+
+      <div class="script-card">
+        <h3>📦 Moving / Declutter Post</h3>
+        <span class="script-when">Use when: someone posts that they're moving and needs to get rid of stuff fast</span>
+        <textarea id="script-moving" readonly>Hi! Saw you're getting ready to move — congrats! If you end up with furniture, appliances, or misc junk you can't bring along, I run a local junk removal service and can clear it all out quickly so your move goes smoothly. Flexible scheduling, upfront pricing. Let me know if I can help! 🚛</textarea>
+        <button class="btn btn-copy btn-sm" onclick="copyScript('script-moving', this)">📋 Copy</button>
+      </div>
+
+      <div class="script-card">
+        <h3>🌸 Spring Cleaning / Estate Sale Leftovers</h3>
+        <span class="script-when">Use when: someone posts about spring cleaning or has leftover items after an estate or garage sale</span>
+        <textarea id="script-cleanout" readonly>Hi! Looks like you've got some great stuff available. If anything's still left over at the end and you just want it gone, I run a junk removal service and can come haul away whatever didn't sell — same day if needed. Makes cleanup a breeze! Feel free to reach out. 👍</textarea>
+        <button class="btn btn-copy btn-sm" onclick="copyScript('script-cleanout', this)">📋 Copy</button>
+      </div>
+
+    </div>
+  </div><!-- /view-scripts -->
 
 </main>
 
@@ -756,6 +840,30 @@
   document.addEventListener('keydown', e => {
     if (e.key === 'Escape') { closeModal(); closeConfirm(); }
   });
+
+  // ── Copy script to clipboard ──────────────────────────────
+  function copyScript(textareaId, btn) {
+    const text = document.getElementById(textareaId).value;
+    navigator.clipboard.writeText(text).then(() => {
+      btn.textContent = '✅ Copied!';
+      btn.classList.add('copied');
+      setTimeout(() => {
+        btn.textContent = '📋 Copy';
+        btn.classList.remove('copied');
+      }, 2000);
+    }).catch(() => {
+      // Fallback for browsers that deny clipboard permission
+      const ta = document.getElementById(textareaId);
+      ta.select();
+      document.execCommand('copy');
+      btn.textContent = '✅ Copied!';
+      btn.classList.add('copied');
+      setTimeout(() => {
+        btn.textContent = '📋 Copy';
+        btn.classList.remove('copied');
+      }, 2000);
+    });
+  }
 </script>
 </body>
 </html>
