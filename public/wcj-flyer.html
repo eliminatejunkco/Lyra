@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>West Coast Jumpers – Bounce House Rentals</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Nunito:wght@400;700;800&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: #0d1b2a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .flyer {
+      width: 600px;
+      background: linear-gradient(160deg, #0f3460 0%, #16213e 60%, #0a0f1e 100%);
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 0 60px rgba(0,200,255,0.25), 0 0 0 2px rgba(0,200,255,0.15);
+      position: relative;
+    }
+
+    /* ── TOP BANNER ── */
+    .top-banner {
+      background: linear-gradient(90deg, #ff6b00, #ff9f1c);
+      text-align: center;
+      padding: 10px 16px;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 14px;
+      letter-spacing: 2px;
+      color: #fff;
+      text-transform: uppercase;
+      text-shadow: 0 1px 4px rgba(0,0,0,0.4);
+    }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      text-align: center;
+      padding: 36px 32px 24px;
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .logo-icon {
+      font-size: 44px;
+      filter: drop-shadow(0 0 12px rgba(255,160,0,0.7));
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+
+    .brand-name {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 28px;
+      color: #fff;
+      line-height: 1;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    }
+
+    .brand-name span {
+      color: #ff9f1c;
+    }
+
+    .tagline {
+      font-size: 13px;
+      color: rgba(255,255,255,0.7);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+
+    /* ── HEADLINE ── */
+    .headline {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 52px;
+      line-height: 1;
+      color: #fff;
+      text-shadow: 0 4px 20px rgba(0,0,0,0.6);
+      margin: 20px 0 6px;
+    }
+
+    .headline em {
+      font-style: normal;
+      color: #ff9f1c;
+      display: block;
+    }
+
+    .sub-headline {
+      font-size: 17px;
+      color: rgba(255,255,255,0.85);
+      margin-bottom: 20px;
+    }
+
+    /* ── BOUNCE HOUSE IMAGE ── */
+    .product-image {
+      width: 100%;
+      max-height: 300px;
+      object-fit: cover;
+      object-position: center 30%;
+      border-radius: 16px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+      display: block;
+    }
+
+    .image-wrapper {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      margin: 0 32px;
+    }
+
+    .image-badge {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: linear-gradient(135deg, #ff6b00, #ff9f1c);
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 13px;
+      padding: 6px 12px;
+      border-radius: 20px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      box-shadow: 0 4px 12px rgba(255,107,0,0.5);
+    }
+
+    /* ── FEATURES ROW ── */
+    .features {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      padding: 20px 32px;
+      flex-wrap: wrap;
+    }
+
+    .feature-chip {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 30px;
+      padding: 8px 16px;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      backdrop-filter: blur(6px);
+    }
+
+    .feature-chip .icon { font-size: 16px; }
+
+    /* ── PRICING ── */
+    .pricing {
+      display: flex;
+      gap: 16px;
+      padding: 0 32px 20px;
+    }
+
+    .price-card {
+      flex: 1;
+      border-radius: 16px;
+      padding: 18px 16px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .price-card.dry {
+      background: linear-gradient(135deg, #1a3a5c, #0f2a45);
+      border: 1.5px solid rgba(0,160,255,0.35);
+    }
+
+    .price-card.wet {
+      background: linear-gradient(135deg, #1a3a5c, #0a2540);
+      border: 1.5px solid rgba(0,220,200,0.4);
+    }
+
+    .price-card.wet::before {
+      content: '⭐ POPULAR';
+      position: absolute;
+      top: -1px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(90deg, #ff6b00, #ff9f1c);
+      color: #fff;
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: 1px;
+      padding: 3px 12px;
+      border-radius: 0 0 10px 10px;
+    }
+
+    .price-type {
+      font-size: 13px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.7);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 4px;
+    }
+
+    .price-amount {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 42px;
+      color: #fff;
+      line-height: 1;
+    }
+
+    .price-amount sup {
+      font-size: 22px;
+      vertical-align: top;
+      margin-top: 6px;
+    }
+
+    .price-note {
+      font-size: 12px;
+      color: rgba(255,255,255,0.55);
+      margin-top: 4px;
+    }
+
+    .price-highlight {
+      font-size: 12px;
+      color: #ff9f1c;
+      font-weight: 700;
+      margin-top: 6px;
+    }
+
+    /* ── CTA BUTTON ── */
+    .cta-wrapper {
+      padding: 4px 32px 24px;
+      text-align: center;
+    }
+
+    .cta-btn {
+      display: inline-block;
+      width: 100%;
+      background: linear-gradient(90deg, #ff6b00, #ff9f1c, #ff6b00);
+      background-size: 200% auto;
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 22px;
+      letter-spacing: 1px;
+      text-decoration: none;
+      padding: 18px 32px;
+      border-radius: 50px;
+      box-shadow: 0 6px 30px rgba(255,107,0,0.5);
+      text-transform: uppercase;
+      animation: shine 2.5s linear infinite;
+      transition: transform 0.1s;
+    }
+
+    @keyframes shine {
+      0% { background-position: 0% center; }
+      100% { background-position: 200% center; }
+    }
+
+    .cta-btn:hover { transform: scale(1.02); }
+
+    .cta-sub {
+      font-size: 12px;
+      color: rgba(255,255,255,0.5);
+      margin-top: 8px;
+    }
+
+    /* ── CONTACT ── */
+    .contact-row {
+      display: flex;
+      gap: 12px;
+      padding: 0 32px 20px;
+    }
+
+    .contact-card {
+      flex: 1;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 14px;
+      padding: 14px 12px;
+      text-align: center;
+    }
+
+    .contact-card .c-icon { font-size: 24px; margin-bottom: 4px; }
+    .contact-card .c-label {
+      font-size: 10px;
+      color: rgba(255,255,255,0.5);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .contact-card .c-value {
+      font-size: 14px;
+      font-weight: 800;
+      color: #fff;
+      margin-top: 2px;
+    }
+    .contact-card .c-value.orange { color: #ff9f1c; }
+
+    /* ── SERVICE AREA ── */
+    .service-area {
+      background: rgba(0,0,0,0.3);
+      margin: 0 32px 20px;
+      border-radius: 14px;
+      padding: 14px 16px;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .service-area .sa-title {
+      font-size: 11px;
+      color: rgba(255,255,255,0.5);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .service-area .sa-cities {
+      font-size: 13px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.85);
+      line-height: 1.7;
+    }
+
+    /* ── TRUST BADGES ── */
+    .trust-row {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      padding: 0 32px 24px;
+    }
+
+    .trust-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      color: rgba(255,255,255,0.6);
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .trust-item .t-icon { font-size: 20px; }
+
+    /* ── FOOTER ── */
+    .footer {
+      background: rgba(0,0,0,0.35);
+      text-align: center;
+      padding: 14px 32px;
+      font-size: 11px;
+      color: rgba(255,255,255,0.4);
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .footer strong { color: rgba(255,255,255,0.65); }
+  </style>
+</head>
+<body>
+
+<div class="flyer">
+
+  <!-- TOP URGENCY BANNER -->
+  <div class="top-banner">🔥 Intro Pricing — Limited Time Only 🔥</div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="logo-area">
+      <div class="logo-icon">🌊</div>
+      <div>
+        <div class="brand-name">West Coast <span>Jumpers</span></div>
+        <div class="tagline">Bounce House Rentals</div>
+      </div>
+    </div>
+
+    <div class="headline">
+      BOUNCE<br>
+      <em>ALL DAY!</em>
+    </div>
+    <div class="sub-headline">Birthdays · Block Parties · Family Fun 🎉</div>
+  </div>
+
+  <!-- PRODUCT IMAGE -->
+  <div class="image-wrapper">
+    <img
+      class="product-image"
+      src="https://github.com/user-attachments/assets/adba8d9f-2139-45db-8e61-0038de71900e"
+      alt="West Coast Jumpers tropical bounce house combo with water slide"
+    />
+    <div class="image-badge">🌊 Water Slide Available!</div>
+  </div>
+
+  <!-- FEATURE CHIPS -->
+  <div class="features">
+    <div class="feature-chip"><span class="icon">🚚</span> Free Delivery</div>
+    <div class="feature-chip"><span class="icon">🔧</span> Setup Included</div>
+    <div class="feature-chip"><span class="icon">☀️</span> All-Day Rental</div>
+    <div class="feature-chip"><span class="icon">🛡️</span> Clean &amp; Safe</div>
+  </div>
+
+  <!-- PRICING -->
+  <div class="pricing">
+    <div class="price-card dry">
+      <div class="price-type">🌤 Dry Combo</div>
+      <div class="price-amount"><sup>$</sup>200</div>
+      <div class="price-note">All Day · Delivery &amp; Setup</div>
+      <div class="price-highlight">↑ Save vs competitors</div>
+    </div>
+    <div class="price-card wet">
+      <div class="price-type">💧 Water Combo</div>
+      <div class="price-amount"><sup>$</sup>260</div>
+      <div class="price-note">All Day · Delivery &amp; Setup</div>
+      <div class="price-highlight">🔥 Kids Love This One!</div>
+    </div>
+  </div>
+
+  <!-- MAIN CTA -->
+  <div class="cta-wrapper">
+    <a class="cta-btn" href="tel:+1XXXXXXXXXX">
+      📞 CALL OR TEXT TO BOOK
+    </a>
+    <div class="cta-sub">Spots fill up fast — secure your date today!</div>
+  </div>
+
+  <!-- CONTACT INFO -->
+  <div class="contact-row">
+    <div class="contact-card">
+      <div class="c-icon">📱</div>
+      <div class="c-label">Call / Text</div>
+      <div class="c-value orange">(XXX) XXX-XXXX</div>
+    </div>
+    <div class="contact-card">
+      <div class="c-icon">📸</div>
+      <div class="c-label">Instagram</div>
+      <div class="c-value">@westcoastjumperss</div>
+    </div>
+    <div class="contact-card">
+      <div class="c-icon">💬</div>
+      <div class="c-label">DM Us</div>
+      <div class="c-value">Always Open</div>
+    </div>
+  </div>
+
+  <!-- SERVICE AREA -->
+  <div class="service-area">
+    <div class="sa-title">
+      <span>📍</span> Now Serving These Areas
+    </div>
+    <div class="sa-cities">
+      La Verne · Pomona · San Dimas · Glendora · Upland · Ontario &amp; Surrounding Cities
+    </div>
+  </div>
+
+  <!-- TRUST BADGES -->
+  <div class="trust-row">
+    <div class="trust-item">
+      <span class="t-icon">✅</span>Sanitized
+    </div>
+    <div class="trust-item">
+      <span class="t-icon">🏡</span>Local Business
+    </div>
+    <div class="trust-item">
+      <span class="t-icon">⭐</span>5-Star Service
+    </div>
+    <div class="trust-item">
+      <span class="t-icon">📅</span>Weekends Available
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <strong>West Coast Jumpers</strong> · Serving the San Gabriel Valley &amp; Inland Empire<br>
+    © 2025 · DM on Instagram or call/text to reserve your date
+  </div>
+
+</div>
+
+</body>
+</html>
